@@ -34,3 +34,21 @@ function scrollW() {
 }
 
 scrollW();
+
+// 가로스크롤 인터랙션
+$('.container').horizon();
+
+$.fn.horizon.defaults = {
+    scrollTimeout: null,
+    scrollEndDelay: 250,
+    scrollDuration: 400,
+    i: 0,
+    limit: 0,
+    docWidth: 0,
+    sections: null,
+    swipe: true,
+    fnCallback: function (i) {}
+};
+
+$(document).horizon('scrollRight');
+$(document).horizon('scrollLeft');
