@@ -16,8 +16,7 @@
 /* ============================================================================================ */
 /* [common]
 /* ============================================================================================ */
-
-body {font-family: 'Poppins', 'Noto Sans KR', sans-serif; font-style: normal;}
+body {overflow: hidden; font-family: 'Poppins', 'Noto Sans KR', sans-serif; font-style: normal;}
 
 /* clearfix */
 .clearfix {*zoom: 1;}
@@ -47,3 +46,6 @@ body {font-family: 'Poppins', 'Noto Sans KR', sans-serif; font-style: normal;}
 /* [layout]
 /* ============================================================================================ */
 
+/* .container {position: relative; width: 300%; height: 100%;} */
+.keyVisual {position: relative; display: flex; width: 300%; height: 100%;}
+.keyVisual li { width: calc(100%/3);}
