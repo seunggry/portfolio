@@ -5,7 +5,6 @@
 .btn:hover a::before {width: 100px; height: 100px;}
 
 /* keyVisual */
-.keyVisual li {position: relative;}
 .keyVisual .txtWrap {position: absolute; top: 50%; left: 200px; transform: translateY(-50%); color: #fff; z-index: 2;}
 .keyVisual .txtWrap .title h2 {font-size: 80px; font-weight: 100;}
 .keyVisual .txtWrap .title span {font-weight: 500;}
