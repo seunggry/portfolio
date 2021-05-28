@@ -1,17 +1,32 @@
 // 가로스크롤
+
 /*
 $(".container").touchFlow({
     useMouse : true,
     useWheel : true,
     axis : "x",
     page : "section",
-    speed : "300",
-    // snap : true,
+    speed : "100",
+    snap : true,
     // scrollbar : true
 });
 */
 
 function scrollW() {
+
+    $('.container').on('mousewheel DOMMouseScroll', function(e) {
+        let wheelDelta = e.originalEvent.wheelDelta;
+
+        if ( wheelDelta > 0 ) {
+            console.log('up');
+            $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
+        } else {
+            console.log('down');
+            $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
+        }
+    });
+
+
 /*
     let win_w = $(window).width();
 
@@ -31,6 +46,7 @@ function scrollW() {
     });
 */
 
+/*
     $('section').on('mousewheel DOMMouseScroll', function(e) {
         let wheelDelta = e.originalEvent.wheelDelta;
 
@@ -43,11 +59,11 @@ function scrollW() {
             $(this).scrollLeft( -wheelDelta + $(this).scrollLeft());
 
         } else {
-            $(this).scrollLeft( -wheelDelta + $(this).scrollLeft());
+            $(this).scrollLeft( -wheelDelta - $(this).scrollLeft());
 
         }
     });
-
+*/
 }
 
 scrollW();
