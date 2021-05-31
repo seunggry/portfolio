@@ -11,20 +11,57 @@ $(".container").touchFlow({
     // scrollbar : true
 });
 */
-
-function scrollW() {
-
-    $('.container').on('mousewheel DOMMouseScroll', function(e) {
-        let wheelDelta = e.originalEvent.wheelDelta;
-
-        if ( wheelDelta > 0 ) {
-            console.log('up');
-            $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
-        } else {
-            console.log('down');
-            $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
-        }
+$(document).ready(function() {
+    $('html').mousewheel(function(e, delta) { 
+        this.scrollLeft -= (delta);
     });
+
+});
+
+
+// function scrollW() {
+//     $('body').on('mousewheel', function(delta) {
+//         $(this).scrollLeft -= (delta * 100);
+    
+//         if( delta > 0 ) {
+//             $(this).scrollLeft( -delta + $(this).scrollLeft());
+//         } else {
+//             $(this).scrollLeft( -delta + $(this).scrollLeft());
+//         }
+//     });
+// }
+
+// scrollW();
+
+
+// function scrollW() {
+//     $('.container').on('mousewheel DOMMouseScroll', function(e) {
+//         let wheelDelta = e.originalEvent.wheelDelta;
+
+//         if( wheelDelta > 0 ) {
+//             $(this).scrollLeft( -wheelDelta + $(this).scrollLeft());
+//         } else {
+//             $(this).scrollLeft( -wheelDelta + $(this).scrollLeft());
+//         }
+//     });
+// }
+
+// scrollW();
+
+
+// function scrollW() {
+
+//     $('.container').on('mousewheel DOMMouseScroll', function(e) {
+//         let wheelDelta = e.originalEvent.wheelDelta;
+
+//         if ( wheelDelta > 0 ) {
+//             console.log('up');
+//             $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
+//         } else {
+//             console.log('down');
+//             $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
+//         }
+//     });
 
 
 /*
@@ -64,6 +101,6 @@ function scrollW() {
         }
     });
 */
-}
+// }
 
-scrollW();
+// scrollW();
