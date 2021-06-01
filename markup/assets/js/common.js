@@ -1,38 +1,44 @@
-// 가로스크롤
+// 클릭 방지 이벤트
+$('a[href="#"]').click(function(e){
+    e.preventDefault();
+});
 
+// 가로스크롤
 /*
-$(".container").touchFlow({
+$('.container').touchFlow({
+    axis : 'x',
+    page : 'section',
+    speed : 200,
     useMouse : true,
     useWheel : true,
-    axis : "x",
-    page : "section",
-    speed : "100",
-    snap : true,
-    // scrollbar : true
+    scrollbar : true,
+    scrollbarAutoHide: false,
+    // snap : true,
 });
 */
-$(document).ready(function() {
+
+$(function(){
     $('html').mousewheel(function(e, delta) { 
         this.scrollLeft -= (delta);
     });
-
 });
 
-
-// function scrollW() {
-//     $('body').on('mousewheel', function(delta) {
-//         $(this).scrollLeft -= (delta * 100);
+/*
+function scrollW() {
+    $('body').on('mousewheel DOMMouseScroll', function(delta) {
+        let wheelDelta = e.originalEvent.wheelDelta;
+        // $(this).scrollLeft -= (delta * 100);
     
-//         if( delta > 0 ) {
-//             $(this).scrollLeft( -delta + $(this).scrollLeft());
-//         } else {
-//             $(this).scrollLeft( -delta + $(this).scrollLeft());
-//         }
-//     });
-// }
+        if( wheelDelta > 0 ) {
+            $(this).animate({scrollLeft : '1=100'});
+        } else {
+            $(this).animate({scrollLeft : '+=100'});
+        }
+    });
+}
 
-// scrollW();
-
+scrollW();
+*/
 
 // function scrollW() {
 //     $('.container').on('mousewheel DOMMouseScroll', function(e) {
@@ -104,3 +110,58 @@ $(document).ready(function() {
 // }
 
 // scrollW();
+
+
+// 인트로 인터랙션
+$(function(){
+
+    $('.intro > .tit p').animate({'top' : '0'},500);
+
+    setTimeout(function(){
+        $('.intro > .tit span').animate({'opacity':'1', 'left' : '0'}, 900);
+    }, 300);
+
+    setTimeout(function(){
+        $('.intro .detail').animate({'opacity':'1'},700);
+    }, 1200);
+    
+});
+
+
+// 포트폴리오 리스트 호버 효과
+$('.pfList li').mouseover(function(){
+    $(this).addClass('on');
+})
+.mouseleave(function(){
+    $(this).removeClass('on');
+});
+
+
+// 해당 위치 인터랙션
+$(window).scroll(function(){
+    let scrollL = $(window).scrollLeft();
+    let windowW = window.innerWidth * 2/3;
+    let pfListW;
+
+    $('.pfList li').each(function(){
+        pfListW = $(this).offset().left;
+
+        if( scrollL > pfListW - windowW ) {
+            $(this).animate({'opacity' : 1}, 200);
+        }
+    });
+
+
+    $('.contact > .inner').each(function(){
+        contactW = $(this).offset().left;
+        
+        if( scrollL > contactW - windowW ) {
+            $(this).animate({'opacity' : 1}, 500);
+        }
+    });
+
+});
+
+// 스크롤 이동 부드럽게
+// let locationW = $('body').offset().left;
+// window.scrollTo({left: 100, behavior: 'smooth'});
