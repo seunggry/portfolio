@@ -20,6 +20,8 @@ $('.container').touchFlow({
 $(function(){
     $('html').mousewheel(function(e, delta) { 
         this.scrollLeft -= (delta);
+
+        $('.float_mark').css({'transform': 'rotate('+delta+'deg)'});
     });
 });
 

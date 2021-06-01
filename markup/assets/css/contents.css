@@ -33,5 +33,5 @@
 .contact .txtWrap li.txt {padding-bottom: 20px; opacity: 0.5;}
 
 /* float_mark */
-.float_mark {position: fixed; right: 40px; bottom: 40px; z-index: -1; transition: opacity 0.4s ease; }
-.float_mark::before {content: ''; display: block; width: 280px; height: 280px; background: url('../img/common/img_mark.png') no-repeat center / cover;}
+.float_mark {position: fixed; right: 60px; bottom: 60px; z-index: -1; transition: 0.4s ease; }
+.float_mark::before {content: ''; display: block; width: 240px; height: 240px; background: url('../img/common/img_mark.png') no-repeat center / cover;}
