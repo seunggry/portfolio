@@ -15,15 +15,17 @@ function scroll(direction) {
         let sectionW = $('.container section').innerWidth();
 
 		scrolling = true;
+
 		$('html, body').animate({
-			scrollLeft: direction === 'left' ? htmlScrollL - sectionW/2 : htmlScrollL + sectionW/2
+			scrollLeft : direction === 'left' ? htmlScrollL - sectionW/2 : htmlScrollL + sectionW/2
         }, scrollDuration, function() {
 			scrolling = false;
+            console.log(scrollLeft);
 		});
 	}
 }
 
-$(document).scrollTop(0);
+// $(document).scrollTop(0);
 $(window).on('mousewheel DOMMouseScroll', function(e) {
 	if (scrolling === false) {
 		scrolled++;
@@ -32,11 +34,16 @@ $(window).on('mousewheel DOMMouseScroll', function(e) {
 		if (e.originalEvent.deltaY > 0) {
 			scroll('right');
 			scrolled = 0;
+            // console.log(scroll('right'));
+
+            // $('.float_mark').css({'transform' : 'rotate('+scroll('right')+'deg)'});
 		}
 	
 		if (e.originalEvent.deltaY < 0) {
 			scroll('left');
 			scrolled = 0;
+            // console.log(scroll('left'));
+            // $('.float_mark').css({'transform' : 'rotate('+scroll('left')+'deg)'});
 		}
 	}
 });
@@ -154,7 +161,7 @@ $('html').on('mousemove', function(e){
 $('html').on('mousedown', function(e){
     $('.mouseCursor').animate({width : '50px', height : '50px', opacity : '1'}, 300,
         function(){
-            $('.mouseCursor').animate({width : '40px', height : '40px', opacity : '0.2'}, 300)
+            $('.mouseCursor').animate({width : '30px', height : '30px', opacity : '0.2'}, 300)
         }
     )
 });

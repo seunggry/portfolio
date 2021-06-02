@@ -4,13 +4,11 @@
 .btn a::before {content: ''; position: absolute; left: 0; display: inline-block; width: 48px; height: 48px; border-radius: 50%; opacity: 0.3; transition: 0.3s;}
 .btn:hover a::before {width: 100px; height: 100px;}
 
-/* mouse cursor */
-.mouseCursor {position: absolute; width: 40px; height: 40px; background: #fff; border-radius: 50%; opacity: 0.2; cursor: none; z-index: 1000;}
-
 /* header */
 header {position: fixed; height: 140px; z-index: 10;}
 header .gnb {position: absolute; display: flex; align-items: center; width: 100%; height: 140px; z-index: 20;}
-header .gnb h1 {position: absolute; left: 60px; width: 64px; height: 28px;}
+header .gnb h1 {position: absolute; left: 60px; }
+header .gnb h1 a {display: block; width: 64px; height: 28px;}
 header .gnb h1 img {width: 100%;}
 
 header .gnb .gnbBtn {position: absolute; right: 60px; width: 50px; height: 50px;}
@@ -23,6 +21,11 @@ header .menuOpen .menuList li span {font-size: 90px; color: #fff; letter-spacing
 header .menuOpen.on {transform: scale(1);}
 header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: #000;}
 
+/* footer */
+.mouseCursor {position: absolute; width: 30px; height: 30px; background: #fff; border-radius: 50%; opacity: 0.2; cursor: none; z-index: 1000;}
+
+.float_mark {position: fixed; right: 60px; bottom: 60px; z-index: -1; transition: 0.4s ease; }
+.float_mark::before {content: ''; display: block; width: 240px; height: 240px; background: url('../img/common/img_mark.png') no-repeat center / cover;}
 
 /* intro */
 .intro .tit{display: flex; width: 580px;}
@@ -53,6 +56,4 @@ header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: 
 .contact .txtWrap li + li {margin-top: 20px;}
 .contact .txtWrap li.txt {padding-bottom: 20px; opacity: 0.5;}
 
-/* float_mark */
-.float_mark {position: fixed; right: 60px; bottom: 60px; z-index: -1; transition: 0.4s ease; }
-.float_mark::before {content: ''; display: block; width: 240px; height: 240px; background: url('../img/common/img_mark.png') no-repeat center / cover;}
+
