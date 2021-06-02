@@ -4,6 +4,9 @@
 .btn a::before {content: ''; position: absolute; left: 0; display: inline-block; width: 48px; height: 48px; border-radius: 50%; opacity: 0.3; transition: 0.3s;}
 .btn:hover a::before {width: 100px; height: 100px;}
 
+/* mouse cursor */
+.mouseCursor {position: absolute; width: 40px; height: 40px; background: #fff; border-radius: 50%; opacity: 0.2; cursor: none; z-index: 1000;}
+
 /* header */
 header {position: fixed; height: 140px; z-index: 10;}
 header .gnb {position: absolute; display: flex; align-items: center; width: 100%; height: 140px; z-index: 20;}
@@ -13,7 +16,7 @@ header .gnb h1 img {width: 100%;}
 header .gnb .gnbBtn {position: absolute; right: 60px; width: 50px; height: 50px;}
 header .gnb .gnbBtn a.btn_close {display: none;}
 
-header .menuOpen {position: relative; padding: 140px 200px; display: flex; align-items: center; width: 100vw; height: 100vh; background: #000;  z-index: 10; transform: scale(0); transform-origin: 90% 10%; transition: 0.5s;}
+header .menuOpen {position: relative; padding: 140px 200px; display: flex; align-items: center; width: 100vw; height: 100vh; background: #111;  z-index: 10; transform: scale(0); transform-origin: 90% 10%; transition: 0.5s;}
 header .menuOpen .menuList li + li {margin-top: 100px;}
 header .menuOpen .menuList li span {font-size: 90px; color: #fff; letter-spacing: 8px; font-weight: 800; cursor: pointer; transition: 0.3s;}
 
@@ -30,7 +33,8 @@ header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: 
 
 /* pfList */
 .pfList {display: inline-flex; padding: 0 130px; }
-.pfList li {position: relative; overflow: hidden; margin: 20px; width: 1280px; height: 720px; opacity: 0;transition: 0.5s;}
+.pfList li {position: relative; overflow: hidden; margin-top: 40px; width: 1200px; height: 671px; opacity: 0.2; transition: 0.2s;}
+.pfList li + li {margin-left: 30px;}
 .pfList li a {display: block; width: 100%; height: 100%;}
 .pfList .txtWrap {position: absolute; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; z-index: 2; opacity: 0; transition: 0.3s 0.1s;}
 .pfList .txtWrap h3 {font-weight: 100; text-align: center;}

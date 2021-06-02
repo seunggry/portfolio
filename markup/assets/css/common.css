@@ -48,7 +48,8 @@ body::-webkit-scrollbar-thumb {background: #a9a9a9; border-radius: 10px;}
 /* ============================================================================================ */
 /* [layout]
 /* ============================================================================================ */
-/* .container {position: relative; width: 300%; height: 100%;} */
-/* body {background: #000;} */
+
+html {position: relative; cursor: none;}
+a {cursor: none !important;}
 .container {position: relative; display: inline-flex; height: 100%; white-space: normal;}
 section {position: relative; display: flex; align-items: center; min-width: 100vw; height: 100%; }

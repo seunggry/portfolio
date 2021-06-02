@@ -2,20 +2,24 @@
 <html lang="ko">
 <head>
     <!--#include file="/include/_head.html"-->
+    <script src="../assets/js/lib/jquery.touchFlow.js"></script>
+    <style>
+        .nav_h_type { background: #ccc; position: relative; overflow: hidden; }
+        .nav_h_type ul { float: left; display: block; font-size: 0; white-space: nowrap; position: relative; width: 100%; }
+        .nav_h_type li { box-sizing: border-box; display: inline-block; width: 100%; height: 100px; line-height: 100px; vertical-align: top; text-align: center; font-size: 12px; background: #eee; border: 1px solid #ccc; }
+        .nav_h_type li.on { background: #aaa; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <header>
-        <!--#include file="/include/_header.html"-->
-    </header>
 
     <div class="nav_h_type">
         <ul>
-            <li>contents 1</li>
+            <li class="on">contents 1</li>
             <li>contents 2</li>
             <li>contents 3</li>
             <li>contents 4</li>
             <li>contents 5</li>
-            <li class="on">contents 6</li>
+            <li>contents 6</li>
             <li>contents 7</li>
             <li>contents 8</li>
             <li>contents 9</li>
@@ -27,6 +31,13 @@
     <footer>
         <!--#include file="/include/_footer.html"-->
     </footer>
+
+    <script>
+        $(".nav_h_type").touchFlow({
+            axis : "x",
+            page : "li.on"
+        });
+    </script>
 </body>
 
 </html>

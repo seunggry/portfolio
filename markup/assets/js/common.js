@@ -4,8 +4,6 @@ $('a[href="#"]').click(function(e){
 });
 
 // 가로스크롤
-
-/*
 let scrolling = false;
 let scrolled = 0;
 const scrollDuration = 200;
@@ -13,10 +11,13 @@ const scrollPause = 1;
 
 function scroll(direction) {
 	if (scrolling === false) {
+        let htmlScrollL = $('html,body').scrollLeft();
+        let sectionW = $('.container section').innerWidth();
+
 		scrolling = true;
 		$('html, body').animate({
-			scrollLeft: direction == 'left' ? $('html,body').scrollLeft() - $('.container section').innerWidth() : $('html,body').scrollLeft() + $('.container section').innerWidth()
-		}, scrollDuration, function() {
+			scrollLeft: direction === 'left' ? htmlScrollL - sectionW/2 : htmlScrollL + sectionW/2
+        }, scrollDuration, function() {
 			scrolling = false;
 		});
 	}
@@ -39,115 +40,6 @@ $(window).on('mousewheel DOMMouseScroll', function(e) {
 		}
 	}
 });
-*/
-
-/*
-$('html').touchFlow({
-    axis : 'x',
-    page : 'section',
-    speed : 200,
-    useMouse : true,
-    // useWheel : true,
-    scrollbar : false,
-    // scrollbarAutoHide:false
-});
-*/
-
-$(function(){
-    $('html').mousewheel(function(e, delta) { 
-        this.scrollLeft -= (delta);
-
-        $('.float_mark').css({'transform': 'rotate('+(-delta)+'deg)'});
-    });
-});
-
-/*
-function scrollW() {
-    $('body').on('mousewheel DOMMouseScroll', function(delta) {
-        let wheelDelta = e.originalEvent.wheelDelta;
-        // $(this).scrollLeft -= (delta * 100);
-    
-        if( wheelDelta > 0 ) {
-            $(this).animate({scrollLeft : '1=100'});
-        } else {
-            $(this).animate({scrollLeft : '+=100'});
-        }
-    });
-}
-
-scrollW();
-*/
-
-// function scrollW() {
-//     $('.container').on('mousewheel DOMMouseScroll', function(e) {
-//         let wheelDelta = e.originalEvent.wheelDelta;
-
-//         if( wheelDelta > 0 ) {
-//             $(this).scrollLeft( -wheelDelta + $(this).scrollLeft());
-//         } else {
-//             $(this).scrollLeft( -wheelDelta + $(this).scrollLeft());
-//         }
-//     });
-// }
-
-// scrollW();
-
-
-// function scrollW() {
-
-//     $('.container').on('mousewheel DOMMouseScroll', function(e) {
-//         let wheelDelta = e.originalEvent.wheelDelta;
-
-//         if ( wheelDelta > 0 ) {
-//             console.log('up');
-//             $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
-//         } else {
-//             console.log('down');
-//             $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
-//         }
-//     });
-
-
-/*
-    let win_w = $(window).width();
-
-    $('section').each(function(index){
-        $(this).attr('left', win_w * index );
-    });
-    
-    $('section').on('mousewheel DoMMouseScroll', function(e) {
-        let wheelDelta = e.originalEvent.wheelDelta;
-        let sectionPos = parseInt( $(this).attr('left') );
-
-        if( wheelDelta >= 0 ) {
-            $('html, body').stop().animate({scrollLeft: sectionPos - win_w });
-        } else {
-            $('html, body').stop().animate({scrollLeft: sectionPos + win_w});
-        }
-    });
-*/
-
-/*
-    $('section').on('mousewheel DOMMouseScroll', function(e) {
-        let wheelDelta = e.originalEvent.wheelDelta;
-
-        // let sectionIndex = $('.container section').index(this);
-        // if ( $('.container').children('section').eq(sectionIndex) ) {
-
-        // }
-
-        if( wheelDelta > 0 ) {
-            $(this).scrollLeft( -wheelDelta + $(this).scrollLeft());
-
-        } else {
-            $(this).scrollLeft( -wheelDelta - $(this).scrollLeft());
-
-        }
-    });
-*/
-// }
-
-// scrollW();
 
 
 // 인트로 인터랙션
@@ -174,6 +66,36 @@ $('.pfList li').mouseover(function(){
     $(this).removeClass('on');
 });
 
+// 포트폴리오 리스트 이미지 효과 ??
+function mouseImgEvent() {
+    let imgHolderSize = $(window).width() / 2;
+    let halfWindowHeight = $(window).height() / 2;
+    let halfWindowWidth = $(window).width() / 2;
+    $(".pfList .li")
+      .css("width", imgHolderSize)
+      .css("height", imgHolderSize);
+    $(".pfList .li").css("margin-top", halfWindowHeight - imgHolderSize / 2);
+    $(".pfList .li").css("margin-left", halfWindowWidth - imgHolderSize / 2);
+  }
+  $(window).on("resize", function() {
+    mouseImgEvent();
+});
+mouseImgEvent();
+
+$('.pfList .li').on("mousemove", function(e) {
+    let window_height = $(this).height();
+    let window_width = $(this).width();
+    let mouseXpos = e.pageX;
+    let mouseYpos = e.pageY;
+    let YrotateDeg = (window_width / 2 - mouseXpos) * 0.05;
+    let XrotateDeg = (window_height / 2 - mouseYpos) * -0.05;
+
+    $(".pfList .li .imgWrap").css(
+      "transform",
+      "rotateX(" + XrotateDeg + "deg) rotateY(" + YrotateDeg + "deg)"
+    );
+  });
+
 
 // 해당 위치 인터랙션
 $(window).scroll(function(){
@@ -185,7 +107,7 @@ $(window).scroll(function(){
         pfListW = $(this).offset().left;
 
         if( scrollL > pfListW - windowW ) {
-            $(this).animate({'opacity' : 1}, 200);
+            $(this).animate({'opacity' : 1}, 100);
         }
     });
 
@@ -205,23 +127,35 @@ $(window).scroll(function(){
 // window.scrollTo({left: 100, behavior: 'smooth'});
 
 // 메뉴 클릭 시
-$('.gnbBtn .btn_menu').on('click', function(){
-    $('header .menuOpen').addClass('on');
-    $('.gnbBtn .btn_menu').css({'display':'none'});
-    $('.gnbBtn .btn_close').css({'display':'block'});
-    // if ($(this).is(':visible')) {
-    //     $('header .menuOpen').addClass('on');
-    //     $(this).css({'display':'none'});
-    //     $('.gnbBtn .btn_close').css({'display':'block'});
-    // } else {
-    //     $('header .menuOpen').removeClass('on');
-    //     $(this).css({'display':''});
-    //     $('.gnbBtn .btn_close').css({'display':''});
-    // }
+let menuOpen =  $('header .menuOpen');
+let btnMenu = $('.gnbBtn .btn_menu');
+let btnClose = $('.gnbBtn .btn_close');
+
+btnMenu.on('click', function(){
+    menuOpen.addClass('on');
+    btnMenu.css({'display':'none'});
+    btnClose.css({'display':'block'});
 });
 
-$('.gnbBtn .btn_close').on('click', function(){
-    $('header .menuOpen').removeClass('on');
-    $('.gnbBtn .btn_menu').css({'display':''});
-    $('.gnbBtn .btn_close').css({'display':''});
+btnClose.on('click', function(){
+    menuOpen.removeClass('on');
+    btnMenu.css({'display':''});
+    btnClose.css({'display':''});
 });
+
+// 마우스 커서 인터랙션
+$('html').on('mousemove', function(e){
+    const mouseX = e.pageX;
+    const mouseY = e.pageY;
+
+    $('.mouseCursor').css({'left':  mouseX + 'px', 'top' : mouseY + 'px'});
+});
+
+$('html').on('mousedown', function(e){
+    $('.mouseCursor').animate({width : '50px', height : '50px', opacity : '1'}, 300,
+        function(){
+            $('.mouseCursor').animate({width : '40px', height : '40px', opacity : '0.2'}, 300)
+        }
+    )
+});
+
