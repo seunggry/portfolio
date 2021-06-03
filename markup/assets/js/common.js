@@ -20,12 +20,11 @@ function scroll(direction) {
 			scrollLeft : direction === 'left' ? htmlScrollL - sectionW/2 : htmlScrollL + sectionW/2
         }, scrollDuration, function() {
 			scrolling = false;
-            console.log(scrollLeft);
 		});
 	}
 }
 
-// $(document).scrollTop(0);
+$(document).scrollTop(0);
 $(window).on('mousewheel DOMMouseScroll', function(e) {
 	if (scrolling === false) {
 		scrolled++;
@@ -51,58 +50,100 @@ $(window).on('mousewheel DOMMouseScroll', function(e) {
 
 // 인트로 인터랙션
 $(function(){
+    $('.intro > .tit span').css('animation-play-state', 'paused');
 
-    $('.intro > .tit p').animate({'top' : '0'},500);
+    $('.intro > .tit .before').animate({'top' : '0'}, 500, function() {
+        $('.intro > .tit .after').animate({'opacity':'1', 'left' : '0'}, 1500, function() {
+            $('.intro .detail').animate({'opacity':'1'}, 700, function() {
 
-    setTimeout(function(){
-        $('.intro > .tit span').animate({'opacity':'1', 'left' : '0'}, 1500);
-    }, 200);
+                let introTitmove = $('.intro > .tit span');
+
+                for ( let i = 0; i < introTitmove.length; i++ ) {
+                    // introTitmove.eq(i).animate({'top' : '-30px'}, 300);
+                    introTitmove.eq(i).css('animation-play-state', 'running');
+                    
+                }
+                // $('.intro > .tit span').css('animation-play-state', 'running');
+            });
+        });
+    });
+
+
+    // $('.intro > .tit .before').animate({'top' : '0'},500);
+
+    // setTimeout(function(){
+    //     $('.intro > .tit .after').animate({'opacity':'1', 'left' : '0'}, 1500);
+    // }, 200);
     
-    setTimeout(function(){
-        $('.intro .detail').animate({'opacity':'1'},700);
-    }, 1500);
+    // setTimeout(function(){
+    //     $('.intro .detail').animate({'opacity':'1'},700);
+    // }, 1500);
     
+    // setTimeout(function(){
+    //     $('.intro > .tit span').css('animation-play-state', 'paused');
+    // },300);
 });
 
 
 // 포트폴리오 리스트 호버 효과
-$('.pfList li').mouseover(function(){
-    $(this).addClass('on');
-})
-.mouseleave(function(){
-    $(this).removeClass('on');
-});
+// $('.pfList li').mouseover(function(){
+//     $(this).addClass('on');
+// })
+// .mouseleave(function(){
+//     $(this).removeClass('on');
+// });
 
-// 포트폴리오 리스트 이미지 효과 ??
+// 포트폴리오 리스트 이미지 효과1
+mouseImgEvent();
+
 function mouseImgEvent() {
-    let imgHolderSize = $(window).width() / 2;
-    let halfWindowHeight = $(window).height() / 2;
-    let halfWindowWidth = $(window).width() / 2;
-    $(".pfList .li")
-      .css("width", imgHolderSize)
-      .css("height", imgHolderSize);
+    let imgHolderSize = $('.pfList').width() / 2;
+    let halfWindowHeight = $('.pfList').height() / 2;
+    let halfWindowWidth = $('.pfList').width() / 2;
+
     $(".pfList .li").css("margin-top", halfWindowHeight - imgHolderSize / 2);
     $(".pfList .li").css("margin-left", halfWindowWidth - imgHolderSize / 2);
   }
+
   $(window).on("resize", function() {
     mouseImgEvent();
-});
-mouseImgEvent();
+  });
 
-$('.pfList .li').on("mousemove", function(e) {
+
+$(window).on("mousemove", function(e) {
     let window_height = $(this).height();
     let window_width = $(this).width();
-    let mouseXpos = e.pageX;
-    let mouseYpos = e.pageY;
+    let mouseXpos = e.clientX;
+    let mouseYpos = e.clientY;
     let YrotateDeg = (window_width / 2 - mouseXpos) * 0.05;
     let XrotateDeg = (window_height / 2 - mouseYpos) * -0.05;
 
-    $(".pfList .li .imgWrap").css(
-      "transform",
-      "rotateX(" + XrotateDeg + "deg) rotateY(" + YrotateDeg + "deg)"
-    );
+    $(".pfList li").on('mousemove', function(){
+        $(this).css("transform", "rotateX(" + XrotateDeg + "deg) rotateY(" + YrotateDeg + "deg)");
+    });
+    
+    $('.pfList li').on('mouseleave', function(){
+        $(this).css('transform', 'rotateX(' + 0 + 'deg) rotateY(' + 0 + 'deg)') 
+    });
+
   });
 
+
+// 포트폴리오 리스트 이미지 효과 2
+// let currentPos = window.pageXOffset;
+
+// function portfolioEvent () {
+//     const newPos = window.pageXOffset;
+//     const diff = newPos - currentPos;
+//     const speed = diff/4 * 0.35;
+
+//     $('.pfList').css({'transform' : `skewY(${speed}deg)`});
+
+//     currentPos = newPos;
+//     requestAnimationFrame(portfolioEvent);
+// }
+
+// portfolioEvent();
 
 // 해당 위치 인터랙션
 $(window).scroll(function(){
@@ -151,18 +192,18 @@ btnClose.on('click', function(){
 });
 
 // 마우스 커서 인터랙션
-$('html').on('mousemove', function(e){
-    const mouseX = e.pageX;
-    const mouseY = e.pageY;
+// $('html').on('mousemove', function(e){
+//     const mouseX = e.pageX;
+//     const mouseY = e.pageY;
 
-    $('.mouseCursor').css({'left':  mouseX + 'px', 'top' : mouseY + 'px'});
-});
+//     $('.mouseCursor').css({'left':  mouseX + 'px', 'top' : mouseY + 'px'});
+// });
 
-$('html').on('mousedown', function(e){
-    $('.mouseCursor').animate({width : '50px', height : '50px', opacity : '1'}, 300,
-        function(){
-            $('.mouseCursor').animate({width : '30px', height : '30px', opacity : '0.2'}, 300)
-        }
-    )
-});
+// $('html').on('mousedown', function(e){
+//     $('.mouseCursor').animate({width : '50px', height : '50px', opacity : '1'}, 300,
+//         function(){
+//             $('.mouseCursor').animate({width : '30px', height : '30px', opacity : '0.2'}, 300)
+//         }
+//     )
+// });
 

@@ -19,23 +19,25 @@ header .menuOpen .menuList li + li {margin-top: 100px;}
 header .menuOpen .menuList li span {font-size: 90px; color: #fff; letter-spacing: 8px; font-weight: 800; cursor: pointer; transition: 0.3s;}
 
 header .menuOpen.on {transform: scale(1);}
-header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: #000;}
+header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: #111;}
 
 /* footer */
 .mouseCursor {position: absolute; width: 30px; height: 30px; background: #fff; border-radius: 50%; opacity: 0.2; cursor: none; z-index: 1000;}
 
-.float_mark {position: fixed; right: 60px; bottom: 60px; z-index: -1; transition: 0.4s ease; }
+.float_mark {position: fixed; right: 60px; bottom: 60px; z-index: -1; transition: 0.4s ease; animation: floatMarkRotate 10s infinite alternate; }
 .float_mark::before {content: ''; display: block; width: 240px; height: 240px; background: url('../img/common/img_mark.png') no-repeat center / cover;}
 
 /* intro */
 .intro .tit{display: flex; width: 580px;}
-.intro .tit p {position: relative; top: -600px; padding-left: 60px; font-size: 100px; font-weight: 800; color: #fff; background: #000; z-index: 2;}
-.intro .tit span {position: relative; left: -100%; font-size: 100px; font-weight: 800; color: #fff; white-space: nowrap; opacity: 0;}
+.intro .tit span {position: relative; animation: introTitAnimation 1s linear infinite alternate;}
+.intro .tit span + span {margin-left: -10px;}
+.intro .tit .before {position: relative; top: -600px; display: block; padding-left: 60px; font-size: 100px; font-weight: 800; color: #fff; background: #000; z-index: 2;}
+.intro .tit .after {position: relative; left: -100%; margin-left: 10px; font-size: 100px; font-weight: 800; color: #fff; white-space: nowrap; opacity: 0;}
 .intro .detail {position: relative; display: flex; justify-content: center; align-items: center; width: 1200px; height: 100%; opacity: 0;}
 .intro .detail p {width: 50%; padding: 40px; font-size: 24px; font-weight: 200; color: #fff; line-height: 1.8;}
 
 /* pfList */
-.pfList {display: inline-flex; padding: 0 130px; }
+/* .pfList {display: inline-flex; padding: 0 130px; }
 .pfList li {position: relative; overflow: hidden; margin-top: 40px; width: 1200px; height: 671px; opacity: 0.2; transition: 0.2s;}
 .pfList li + li {margin-left: 30px;}
 .pfList li a {display: block; width: 100%; height: 100%;}
@@ -47,13 +49,42 @@ header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: 
 .pfList .imgWrap::before {content: ''; position: absolute; display: block; width: 0%; height: 100%; background-color: #000; opacity: 0.7; z-index: 1; transition: 0.2s;}
 
 .pfList li.on .txtWrap {display: block; opacity: 1;}
-.pfList li.on .imgWrap::before {width: 100%;}
+.pfList li.on .imgWrap::before {width: 100%;} */
+
+/* pfList 인터랙션 */
+.pfList {display: inline-flex; padding: 0 130px; }
+.pfList li {position: relative; overflow: hidden; margin-top: 40px; width: 1200px; height: 671px; transform-style: preserve-3d; transform-origin: center; transform: rotateX(-2.3deg) rotateY(-5.5deg); transition: ease-out 0.3s;}
+.pfList li + li {margin-left: 30px;}
+.pfList li a {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: block; width: 100%; height: 100%; transition: 0.3s;}
+.pfList .txtWrap {position: absolute;  top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; z-index: 2; transition: 0.3s 0.1s;}
+.pfList .txtWrap h3 {font-weight: 100; text-align: center;}
+.pfList .txtWrap span {font-weight: 500;}
+.pfList .txtWrap p {width: 60%; margin-top: 18px; font-size: 18px; font-weight: 300; opacity: 0.7; line-height: 1.5;}
+.pfList .imgWrap {overflow: hidden; width: 100%;}
+.pfList .imgWrap::before {content: ''; position: absolute; display: block; width: 0%; height: 100%; background-color: #000; opacity: 0.7; z-index: 1; transition: 0.2s;}
+
+/* .pfList li.on .txtWrap {display: block; opacity: 1;}
+.pfList li.on .imgWrap::before {width: 100%;} */
 
 /* contact */
-.contact {display: flex; justify-content: center; align-items: center; padding: 0 120px;}
+.contact {display: flex; align-items: center; justify-content: center; align-items: center; padding: 0 120px;}
 .contact .inner { color: #fff; opacity: 0;}
-.contact .txtWrap li {font-size: 24px; font-weight: 300; line-height: 1.5;}
-.contact .txtWrap li + li {margin-top: 20px;}
-.contact .txtWrap li.txt {padding-bottom: 20px; opacity: 0.5;}
+.contact .txt {margin-bottom: 50px; font-size: 32px; font-weight: 100; line-height: 1.5; opacity: 0.5;}
+.contact .infoTxt li {font-size: 24px; font-weight: 500; line-height: 1.5;}
+.contact .infoTxt li a {display: inline-block;}
+.contact .infoTxt li a::after {content: ''; display: block; margin-top: 6px; width: 0; height: 2px; background: #fff; transition: 0.3s;}
+.contact .infoTxt li + li {margin-top: 30px;}
+.contact .infoTxt li:hover a::after {width: 100%;}
 
 
+
+/* keyframes */
+@keyframes introTitAnimation {
+    from { top: 0; }
+    to { top: -30px; }
+}
+
+@keyframes floatMarkRotate {
+    from { transform : rotate(0); }
+    to { transform : rotate(360deg); }
+}
