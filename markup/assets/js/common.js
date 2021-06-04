@@ -33,55 +33,35 @@ $(window).on('mousewheel DOMMouseScroll', function(e) {
 		if (e.originalEvent.deltaY > 0) {
 			scroll('right');
 			scrolled = 0;
-            // console.log(scroll('right'));
-
-            // $('.float_mark').css({'transform' : 'rotate('+scroll('right')+'deg)'});
 		}
 	
 		if (e.originalEvent.deltaY < 0) {
 			scroll('left');
 			scrolled = 0;
-            // console.log(scroll('left'));
-            // $('.float_mark').css({'transform' : 'rotate('+scroll('left')+'deg)'});
 		}
 	}
 });
 
 
-// 인트로 인터랙션
-$(function(){
-    $('.intro > .tit span').css('animation-play-state', 'paused');
+// 인트로 텍스트 인터랙션
+$('.intro > .tit .before').animate({'top' : '0'}, 500, function() {
+    $('.intro > .tit .after').animate({'opacity':'1', 'left' : '0'}, 1500, function() {
 
-    $('.intro > .tit .before').animate({'top' : '0'}, 500, function() {
-        $('.intro > .tit .after').animate({'opacity':'1', 'left' : '0'}, 1500, function() {
-            // $('.intro .textEdit').animate({'opacity':'1'}, 700, function() {
+        function introTitmove() {
+            let introtit = $('.intro > .tit span');
+            for ( let i = 0; i < introtit.length; i++ ) {
+                introtit.eq(i).delay( i * 100 ).animate({'top' : '-30px'}, 300, function(){
+                    $(this).animate({'top' : '0'});
+                });
+            }
+        }
+        function titEffect() {
+            introTitmove();
+            setTimeout(titEffect, 2000);
+        }
 
-                let introTitmove = $('.intro > .tit span');
-
-                for ( let i = 0; i < introTitmove.length; i++ ) {
-                    // introTitmove.eq(i).animate({'top' : '-30px'}, 300);
-                    introTitmove.eq(i).css('animation-play-state', 'running');
-                    
-                }
-                // $('.intro > .tit span').css('animation-play-state', 'running');
-            // });
-        });
+        titEffect();
     });
-
-
-    // $('.intro > .tit .before').animate({'top' : '0'},500);
-
-    // setTimeout(function(){
-    //     $('.intro > .tit .after').animate({'opacity':'1', 'left' : '0'}, 1500);
-    // }, 200);
-    
-    // setTimeout(function(){
-    //     $('.intro .detail').animate({'opacity':'1'},700);
-    // }, 1500);
-    
-    // setTimeout(function(){
-    //     $('.intro > .tit span').css('animation-play-state', 'paused');
-    // },300);
 });
 
 // 인트로 타이핑 텍스트
@@ -94,24 +74,11 @@ function showText (target, message, index, interval) {
     }
 }
 
+setTimeout(function() {
+    let text = $('.textEdit').html().replace(/<br *\/?>/gi,'\n');
+    showText('.msgTxt', text, 0, 50);
+}, 500);
 
-$(function(){
-    setTimeout(function() {
-        let text = $('.textEdit').html().replace(/<br *\/?>/gi,'\n');
-        showText('.msgTxt', text, 0, 60);
-    }, 500);
-})
-
-
-
-
-// 포트폴리오 리스트 호버 효과
-// $('.pfList li').mouseover(function(){
-//     $(this).addClass('on');
-// })
-// .mouseleave(function(){
-//     $(this).removeClass('on');
-// });
 
 // 포트폴리오 리스트 이미지 효과1
 mouseImgEvent();
@@ -230,10 +197,16 @@ $('html').on('mousedown', function(e){
     )
 });
 
-
 // float_mark 호버시 인터랙션 정지
 $('.float_mark').on('mouseover', function(){
     $(this).css('animation-play-state', 'paused');
 }).on('mouseleave', function(){
     $(this).css('animation-play-state', 'running');
+});
+
+// subPage show
+$('.about .imgWrap .img',).animate({'left' : 0}, 800, function(){
+    $('.about .title p').animate({'left' : 0}, 800, function(){
+        $('.about .txtWrap .subTxt').animate({'right' : 0}, 800);
+    });
 });

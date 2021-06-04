@@ -27,13 +27,13 @@ header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: 
 .float_mark::before {content: ''; display: block; width: 240px; height: 240px; background: url('../img/common/img_mark.png') no-repeat center / cover;}
 
 /* intro */
-.intro .tit{display: flex; width: 580px;}
-.intro .tit span {position: relative; animation: introTitAnimation 1s linear infinite alternate;}
+.intro .tit{display: flex; width: 30%;}
+.intro .tit span {position: relative;}
 .intro .tit span + span {margin-left: -10px;}
 .intro .tit .before {position: relative; top: -600px; display: block; padding-left: 60px; font-size: 100px; font-weight: 800; color: #fff; background: #000; z-index: 2;}
 .intro .tit .after {position: relative; left: -100%; margin-left: 10px; font-size: 100px; font-weight: 800; color: #fff; white-space: nowrap; opacity: 0;}
-.intro .detail {position: relative; display: flex; justify-content: center; align-items: center; width: 1200px; height: 100%;}
-.intro .detail .msgTxt {width: 50%; padding: 40px; font-size: 24px; font-weight: 200; color: #fff; line-height: 1.8;}
+.intro .detail {position: relative; display: flex; justify-content: center; align-items: center; width: 70%; height: 100%;}
+.intro .detail .msgTxt {margin-left: -100px; min-width: 480px; min-height: 336px; font-size: 24px; font-weight: 200; color: #fff; white-space: pre;}
 .intro .detail .textEdit {display: none;}
 
 /* pfList */
@@ -75,16 +75,17 @@ subpage
 
 /* about */
 .about {display: flex; align-items: center; justify-content: center;}
-.about .imgWrap .img {position: relative; width: 600px; padding-top: calc(800/600 * 100%);}
+.about .imgWrap { width: 600px; height: 700px; overflow: hidden;}
+.about .imgWrap .img {position: relative; left: -100%; width: 600px; padding-top: calc(700/600 * 100%);}
 .about .imgWrap .img img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;}
 .about .imgWrap .figure {font-size: 20px; line-height: 1.5; letter-spacing: 0.5px; text-align: right; }
 
-.about .txtWrap {margin-top: -100px;}
-.about .txtWrap .title {position: relative; color: #fff; left: -115px;}
-.about .txtWrap .title span {font-size: 24px; font-weight: 500; letter-spacing: 1px;}
-.about .txtWrap .title p {position: relative; margin-top: 10px; font-size: 100px; font-weight: 800;}
-.about .txtWrap .title p::before {content: '&'; position: absolute; top: 35px; left: 280px; opacity: 0.15; font-size: 140px;}
-.about .txtWrap .subTxt {margin-left: 80px; color: #fff;}
+.about .title {position: absolute; overflow: hidden; top: 18%; left: 46.5%; width: 507px;  color: #fff;}
+.about .title p {position: relative; left: -100%; margin-top: 10px; font-size: 100px; font-weight: 800;}
+.about .title p::before {content: '&'; position: absolute; top: 35px; left: 280px; opacity: 0.15; font-size: 140px;}
+
+.about .txtWrap {width: 500px; overflow: hidden;}
+.about .txtWrap .subTxt {position: relative; right: -100%; margin: 250px 0 0 80px; color: #fff;}
 .about .txtWrap .subTxt dt {margin: 100px 0 30px; font-size: 20px; font-weight: 500; line-height: 1.5;}
 .about .txtWrap .subTxt dd {font-size: 16px; font-weight: 200; opacity: 0.5; line-height: 1.5;}
 .about .txtWrap .subTxt dd + dd {margin-top: 30px;}
@@ -102,10 +103,10 @@ subpage
 
 
 /* keyframes */
-@keyframes introTitAnimation {
+/* @keyframes introTitAnimation {
     from { top: 0; }
     to { top: -30px; }
-}
+} */
 
 @keyframes floatMarkRotate {
     from { transform : rotate(0); }
