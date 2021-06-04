@@ -54,7 +54,7 @@ $(function(){
 
     $('.intro > .tit .before').animate({'top' : '0'}, 500, function() {
         $('.intro > .tit .after').animate({'opacity':'1', 'left' : '0'}, 1500, function() {
-            $('.intro .detail').animate({'opacity':'1'}, 700, function() {
+            // $('.intro .textEdit').animate({'opacity':'1'}, 700, function() {
 
                 let introTitmove = $('.intro > .tit span');
 
@@ -64,7 +64,7 @@ $(function(){
                     
                 }
                 // $('.intro > .tit span').css('animation-play-state', 'running');
-            });
+            // });
         });
     });
 
@@ -83,6 +83,26 @@ $(function(){
     //     $('.intro > .tit span').css('animation-play-state', 'paused');
     // },300);
 });
+
+// 인트로 타이핑 텍스트
+function showText (target, message, index, interval) {
+    if( index < message.length ) {
+        $(target).append(message[index++]);
+        setTimeout( function() {
+            showText(target, message, index, interval);
+        }, interval );
+    }
+}
+
+
+$(function(){
+    setTimeout(function() {
+        let text = $('.textEdit').html().replace(/<br *\/?>/gi,'\n');
+        showText('.msgTxt', text, 0, 60);
+    }, 500);
+})
+
+
 
 
 // 포트폴리오 리스트 호버 효과
@@ -192,18 +212,28 @@ btnClose.on('click', function(){
 });
 
 // 마우스 커서 인터랙션
-// $('html').on('mousemove', function(e){
-//     const mouseX = e.pageX;
-//     const mouseY = e.pageY;
+let cursorOriginSize = '30px';
+let cursorEffectSize = '50px';
 
-//     $('.mouseCursor').css({'left':  mouseX + 'px', 'top' : mouseY + 'px'});
-// });
+$('html').on('mousemove', function(e){
+    const mouseX = e.pageX;
+    const mouseY = e.pageY;
 
-// $('html').on('mousedown', function(e){
-//     $('.mouseCursor').animate({width : '50px', height : '50px', opacity : '1'}, 300,
-//         function(){
-//             $('.mouseCursor').animate({width : '30px', height : '30px', opacity : '0.2'}, 300)
-//         }
-//     )
-// });
+    $('.mouseCursor').css({'left':  mouseX + 'px', 'top' : mouseY + 'px'});
+});
 
+$('html').on('mousedown', function(e){
+    $('.mouseCursor').animate({width : cursorEffectSize, height : cursorEffectSize, opacity : '1'}, 300,
+        function(){
+            $('.mouseCursor').animate({width : cursorOriginSize , height : cursorOriginSize, opacity : '0.5'}, 300)
+        }
+    )
+});
+
+
+// float_mark 호버시 인터랙션 정지
+$('.float_mark').on('mouseover', function(){
+    $(this).css('animation-play-state', 'paused');
+}).on('mouseleave', function(){
+    $(this).css('animation-play-state', 'running');
+});

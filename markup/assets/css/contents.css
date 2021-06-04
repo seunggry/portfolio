@@ -15,16 +15,15 @@ header .gnb .gnbBtn {position: absolute; right: 60px; width: 50px; height: 50px;
 header .gnb .gnbBtn a.btn_close {display: none;}
 
 header .menuOpen {position: relative; padding: 140px 200px; display: flex; align-items: center; width: 100vw; height: 100vh; background: #111;  z-index: 10; transform: scale(0); transform-origin: 90% 10%; transition: 0.5s;}
+header .menuOpen.on {transform: scale(1);}
 header .menuOpen .menuList li + li {margin-top: 100px;}
 header .menuOpen .menuList li span {font-size: 90px; color: #fff; letter-spacing: 8px; font-weight: 800; cursor: pointer; transition: 0.3s;}
-
-header .menuOpen.on {transform: scale(1);}
 header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: #111;}
 
 /* footer */
-.mouseCursor {position: absolute; width: 30px; height: 30px; background: #fff; border-radius: 50%; opacity: 0.2; cursor: none; z-index: 1000;}
+.mouseCursor {position: absolute; width: 30px; height: 30px; background: #fff; border-radius: 50%; opacity: 0.5; cursor: none; z-index: 1000;}
 
-.float_mark {position: fixed; right: 60px; bottom: 60px; z-index: -1; transition: 0.4s ease; animation: floatMarkRotate 10s infinite alternate; }
+.float_mark {position: fixed; right: 60px; bottom: 60px; z-index: -1; transition: 0.4s ease; animation: floatMarkRotate 10s infinite alternate; z-index: 5;}
 .float_mark::before {content: ''; display: block; width: 240px; height: 240px; background: url('../img/common/img_mark.png') no-repeat center / cover;}
 
 /* intro */
@@ -33,26 +32,12 @@ header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: 
 .intro .tit span + span {margin-left: -10px;}
 .intro .tit .before {position: relative; top: -600px; display: block; padding-left: 60px; font-size: 100px; font-weight: 800; color: #fff; background: #000; z-index: 2;}
 .intro .tit .after {position: relative; left: -100%; margin-left: 10px; font-size: 100px; font-weight: 800; color: #fff; white-space: nowrap; opacity: 0;}
-.intro .detail {position: relative; display: flex; justify-content: center; align-items: center; width: 1200px; height: 100%; opacity: 0;}
-.intro .detail p {width: 50%; padding: 40px; font-size: 24px; font-weight: 200; color: #fff; line-height: 1.8;}
+.intro .detail {position: relative; display: flex; justify-content: center; align-items: center; width: 1200px; height: 100%;}
+.intro .detail .msgTxt {width: 50%; padding: 40px; font-size: 24px; font-weight: 200; color: #fff; line-height: 1.8;}
+.intro .detail .textEdit {display: none;}
 
 /* pfList */
-/* .pfList {display: inline-flex; padding: 0 130px; }
-.pfList li {position: relative; overflow: hidden; margin-top: 40px; width: 1200px; height: 671px; opacity: 0.2; transition: 0.2s;}
-.pfList li + li {margin-left: 30px;}
-.pfList li a {display: block; width: 100%; height: 100%;}
-.pfList .txtWrap {position: absolute; display: none; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; z-index: 2; opacity: 0; transition: 0.3s 0.1s;}
-.pfList .txtWrap h3 {font-weight: 100; text-align: center;}
-.pfList .txtWrap span {font-weight: 500;}
-.pfList .txtWrap p {width: 60%; margin-top: 18px; font-size: 18px; font-weight: 300; opacity: 0.7; line-height: 1.5;}
-.pfList .imgWrap {overflow: hidden; width: 100%;}
-.pfList .imgWrap::before {content: ''; position: absolute; display: block; width: 0%; height: 100%; background-color: #000; opacity: 0.7; z-index: 1; transition: 0.2s;}
-
-.pfList li.on .txtWrap {display: block; opacity: 1;}
-.pfList li.on .imgWrap::before {width: 100%;} */
-
-/* pfList 인터랙션 */
-.pfList {display: inline-flex; padding: 0 130px; }
+.pfList {display: inline-flex; padding: 0 130px; z-index: 9;}
 .pfList li {position: relative; overflow: hidden; margin-top: 40px; width: 1200px; height: 671px; transform-style: preserve-3d; transform-origin: center; transform: rotateX(-2.3deg) rotateY(-5.5deg); transition: ease-out 0.3s;}
 .pfList li + li {margin-left: 30px;}
 .pfList li a {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: block; width: 100%; height: 100%; transition: 0.3s;}
@@ -63,19 +48,57 @@ header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: 
 .pfList .imgWrap {overflow: hidden; width: 100%;}
 .pfList .imgWrap::before {content: ''; position: absolute; display: block; width: 0%; height: 100%; background-color: #000; opacity: 0.7; z-index: 1; transition: 0.2s;}
 
-/* .pfList li.on .txtWrap {display: block; opacity: 1;}
-.pfList li.on .imgWrap::before {width: 100%;} */
-
 /* contact */
-.contact {display: flex; align-items: center; justify-content: center; align-items: center; padding: 0 120px;}
-.contact .inner { color: #fff; opacity: 0;}
+.contact {position: relative; display: flex; align-items: center; justify-content: center; align-items: center; padding: 0 120px;}
+.contact .inner {color: #fff; opacity: 0;}
 .contact .txt {margin-bottom: 50px; font-size: 32px; font-weight: 100; line-height: 1.5; opacity: 0.5;}
-.contact .infoTxt li {font-size: 24px; font-weight: 500; line-height: 1.5;}
+.contact .infoTxt li {font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; line-height: 1.5; letter-spacing: 0;}
 .contact .infoTxt li a {display: inline-block;}
 .contact .infoTxt li a::after {content: ''; display: block; margin-top: 6px; width: 0; height: 2px; background: #fff; transition: 0.3s;}
-.contact .infoTxt li + li {margin-top: 30px;}
+.contact .infoTxt li + li {margin-top: 10px;}
 .contact .infoTxt li:hover a::after {width: 100%;}
 
+.contact .circlePulse {max-width: 30rem; z-index: -1;}
+.contact .circlePulse span {position: absolute; display: block; width: 30px; height: 30px; transform-origin: 50% 50%; border-radius: 50%;}
+.contact .circlePulse span:nth-child(2n-1) {background: rgba(255, 255, 255, 0.3); transform: scale(0); opacity: 0; animation: pulse 2s ease infinite alternate;}
+.contact .circlePulse span:nth-child(2n) {background: rgba(255, 255, 255, 0.5); transform: scale(0.5); animation: pulse 2s 1s ease infinite alternate;}
+
+.contact .circlePulse span:nth-child(1) {top: 200px; left: 500px;}
+.contact .circlePulse span:nth-child(2) {top: 400px; left: 200px;} 
+.contact .circlePulse span:nth-child(3) {top: 900px; left: 800px; animation-delay: 3s;} 
+.contact .circlePulse span:nth-child(4) {top: 700px; left: 1200px; animation-delay: 2s;}
+.contact .circlePulse span:nth-child(5) {top: 350px; left: 1000px; animation-delay: 5s;}
+
+/*
+subpage
+*/
+
+/* about */
+.about {display: flex; align-items: center; justify-content: center;}
+.about .imgWrap .img {position: relative; width: 600px; padding-top: calc(800/600 * 100%);}
+.about .imgWrap .img img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;}
+.about .imgWrap .figure {font-size: 20px; line-height: 1.5; letter-spacing: 0.5px; text-align: right; }
+
+.about .txtWrap {margin-top: -100px;}
+.about .txtWrap .title {position: relative; color: #fff; left: -115px;}
+.about .txtWrap .title span {font-size: 24px; font-weight: 500; letter-spacing: 1px;}
+.about .txtWrap .title p {position: relative; margin-top: 10px; font-size: 100px; font-weight: 800;}
+.about .txtWrap .title p::before {content: '&'; position: absolute; top: 35px; left: 280px; opacity: 0.15; font-size: 140px;}
+.about .txtWrap .subTxt {margin-left: 80px; color: #fff;}
+.about .txtWrap .subTxt dt {margin: 100px 0 30px; font-size: 20px; font-weight: 500; line-height: 1.5;}
+.about .txtWrap .subTxt dd {font-size: 16px; font-weight: 200; opacity: 0.5; line-height: 1.5;}
+.about .txtWrap .subTxt dd + dd {margin-top: 30px;}
+
+/* contact */
+.contact {position: relative;}
+.contact > h2 {position: absolute; top: 360px; left: -140px; font-size: 140px; font-weight: 800; color: #fff; letter-spacing: 4px; white-space: nowrap; transform: rotate(90deg);}
+.contact .txtWrap {margin-left: 180px;}
+.contact .txtWrap .txt li {font-size: 18px; font-weight: 200; color: #fff;  opacity: 0.7; line-height: 1.5;}
+.contact .txtWrap .txt li + li {margin-top: 30px;}
+.contact .txtWrap .infoTxt {margin-bottom: 150px; color: #fff;}
+.contact .txtWrap .infoTxt li { font-size: 50px; }
+.contact .txtWrap .infoTxt li + li {margin-top: 0;}
+.contact .txtWrap .copyright {font-size: 16px;}
 
 
 /* keyframes */
@@ -87,4 +110,13 @@ header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: 
 @keyframes floatMarkRotate {
     from { transform : rotate(0); }
     to { transform : rotate(360deg); }
+}
+
+@keyframes pulse {
+    25% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1);
+    }
 }

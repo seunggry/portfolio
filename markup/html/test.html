@@ -6,160 +6,128 @@
     <script type="text/javascript" src="../assets/js/lib/jquery-ui.min.js"></script>
 
     <style>
-        body {
-        background: #04000a;
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-        overflow: hidden;
-        }
-        body:before {
+      body {
+        background: linear-gradient(to top right, #2cabe1, #254290, #231f20);
+        font-family: Courier New, monospace;
+      }
+
+      .content {
+        margin: 3em auto;
+        max-width: 500px;
+      }
+
+      .notebook-page {
+        padding: 90px 40px 40px 85px;
+        background-color: #fff;
+        background-image: linear-gradient(rgba(33, 150, 243, 0.27) 0.05em, transparent 0.05em);
+        background-size: 100% 2em;
+        position: relative;
+        min-height: 500px;
+        box-shadow: 0 9px 20px rgba(0, 0, 0, 0.1);
+      }
+      .notebook-page:after {
         content: "";
         position: absolute;
-        width: 100vw;
-        height: 100vh;
-        background-image: url("https://clipartimage.net/thumbs/1495916688stars-png-with-transparent-background.png");
-        background-size: 25%;
-        }
-        .main {
-        perspective: 1100px;
-        width: 100vw;
-        height: 100vh;
-        }
-        .wrap {
-        width: 100vw;
-        height: 100vh;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        transition: ease-out 0.2s;
-        transform-origin: center;
-        transform: rotateX(-2.3deg) rotateY(-5.5deg);
-        }
-        .moon {
-        margin-top: 10%;
-        margin-left: 10%;
-        width: 50px;
-        height: 50px;
-        background: #fff;
+        left: 10%;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: #ef5350;
+      }
+      .notebook-page .text-edit {
+        display: none;
+      }
+
+      textarea#msg {
+        background: none;
+        border: none;
+        color: #111;
+        font-size: 24px;
+        min-height: 450px;
+        resize: none;
+        line-height: 1.25;
+      }
+
+      aside.context {
+        color: #fff;
+        text-align: center;
+      }
+      aside.context a {
+        color: #fff;
+        text-decoration: none;
+        color: #111;
+        padding: 5px 0;
+        border-bottom: 1px dashed;
+      }
+      aside.context a:visited {
+        color: #fff;
+      }
+      aside.context .explanation {
+        max-width: 700px;
+        margin: 3em auto;
+      }
+
+      footer {
+        text-align: center;
+        margin: 5em auto;
+      }
+      footer a {
+        text-decoration: none;
+        display: inline-block;
+        width: 45px;
+        height: 45px;
         border-radius: 50%;
-        box-shadow: 0 0 25px #fff;
-        }
-        .imageHolder {
-        position: absolute;
-        overflow: hidden;
-        }
-        img {
-        position: absolute;
-        bottom: 15%;
-        width: 270%;
-        }
-        .rotY {
-        transform: rotateY(180deg);
-        margin-left: -7%;
-        }
-        .bg0 {
-        transform: translateZ(-1200px) scale(1.77) translateX(-30px) translateY(23px);
-        }
-        .bg1 {
-        filter: contrast(0);
-        transform: translateZ(-1000px) scale(1.62) translateX(-26px) translateY(21px);
-        }
-        .bg2 {
-        filter: brightness(3);
-        transform: translateZ(-800px) scale(1.465) translateX(-22px) translateY(17px);
-        }
-        .bg3 {
-        filter: contrast(0.7);
-        transform: translateZ(-600px) scale(1.31) translateX(-16px) translateY(13px);
-        }
-        .bg4 {
-        filter: contrast(0.85);
-        transform: translateZ(-400px) scale(1.158) translateX(-9px) translateY(8px);
-        }
-        .bg5 {
-        transform: translateZ(-200px);
-        border: 10px solid #fff;
-        filter: drop-shadow(0px 0px 10px #000);
-        }
-        .midTree img,
-        .midTree2 img {
-        width: 130%;
-        margin-bottom: -15%;
-        margin-left: -90%;
-        }
-        .midTree2 img {
-        margin-left: 40%;
-        }
-        .frontTree img {
-        width: 520%;
-        margin-bottom: -90%;
-        margin-left: -145%;
-        }
-        .wolf img {
-        width: 60%;
-        margin-bottom: -27%;
-        margin-left: 25%;
-        }
+        background: transparent;
+        border: 1px dashed #fff;
+        color: #fff;
+        margin: 5px;
+      }
+      footer a:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+      footer a .icons {
+        margin-top: 12px;
+        display: inline-block;
+        font-size: 20px;
+      }
     </style>
 </head>
       
 <body>
-    <div class="main">
-        <div class="wrap">
-          <div class="imageHolder bg0">
-            <div class="moon"></div>
-          </div>
-          <div class="imageHolder bg1">
-            <img class="rotY" src="https://forestcom-themesurgeons.netdna-ssl.com/wp-content/uploads/2018/10/tree1-sld.png">
-          </div>
-          <div class="imageHolder bg2">
-            <img src="http://www.yerbabuena1.com/background/forest.png">
-          </div>
-          <div class="imageHolder midTree bg3">
-            <img src="https://i.pinimg.com/originals/bf/31/32/bf3132b0acf0e28f0695d7f37c3e62fd.png">
-          </div>
-          <div class="imageHolder midTree2 bg3">
-            <img src="https://i.pinimg.com/originals/bf/31/32/bf3132b0acf0e28f0695d7f37c3e62fd.png">
-          </div>
-          <div class="imageHolder frontTree bg4">
-            <img src="https://i.pinimg.com/originals/bf/31/32/bf3132b0acf0e28f0695d7f37c3e62fd.png">
-          </div>
-          <div class="imageHolder wolf bg5">
-            <img src="https://images.vexels.com/media/users/3/148118/isolated/preview/06bc5a8132921a97bb7a0c7bb0b098f6-wolf-howling-silhouette-by-vexels.png">
-          </div>
-        </div>
+  <div class="content"> 
+    <div class="notebook-page"> 
+      <textarea id="msg">
+
+      </textarea>
+      <div class="text-edit">
+        Dear Evan Hansen,<br><br>
+        Today is going to be a good day. And here's why: because today, today at least you're you and — that's enough.<br><br>
+        Sincerely, <br>
+        Me.
       </div>
+    </div>
+    <!-- <aside class="context">
+      <div class="explanation">
+         Inspired by the musical <a href="https://dearevanhansen.com/" target="_blank">'Dear Evan Hansen'</a></div>
+    </aside> -->
+  </div>
+  
+  <script>
+      var showText = function (target, message, index, interval) {
+        if (index < message.length) { 
+          $(target).append(message[index++]); 
+          setTimeout(function () { showText(target, message, index, interval); }, interval); 
+        } 
+      }
 
-    <script>
-        elementAlign();
-
-        function elementAlign() {
-            var imageHolderSize = $(window).width() / 2;
-            var halfWindowHeight = $(window).height() / 2;
-            var halfWindowWidth = $(window).width() / 2;
-            $(".imageHolder")
-            .css("width", imageHolderSize)
-            .css("height", imageHolderSize);
-            $(".imageHolder").css("margin-top", halfWindowHeight - imageHolderSize / 2);
-            $(".imageHolder").css("margin-left", halfWindowWidth - imageHolderSize / 2);
-        }
-        $(window).on("resize", function() {
-            elementAlign();
-        });
-
-        $(document).on("mousemove", function(event) {
-            var window_height = $(this).height();
-            var window_width = $(this).width();
-            var mouseXpos = event.clientX;
-            var mouseYpos = event.clientY;
-            var YrotateDeg = (window_width / 2 - mouseXpos) * 0.05;
-            var XrotateDeg = (window_height / 2 - mouseYpos) * -0.05;
-            $(".wrap").css(
-                "transform",
-                "rotateX(" + XrotateDeg + "deg) rotateY(" + YrotateDeg + "deg)"
-            );
-        });
-    </script>
+      $(document).ready(function() {
+        setTimeout(function() {
+          var text = $('.text-edit').html().replace(/<br *\/?>/gi,'\n');
+          console.log($('.text-edit').html());
+        showText("#msg", text, 0, 100); 
+        }, 2000);
+      });
+  </script>
 
 </body>
 </html>
