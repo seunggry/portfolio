@@ -210,3 +210,7 @@ $('.about .imgWrap .img',).animate({'left' : 0}, 800, function(){
         $('.about .txtWrap .subTxt').animate({'right' : 0}, 800);
     });
 });
+
+$('.contact > h2').animate({'top' : '360px'}, 800, function(){
+    $('.contact .txtWrap .subTxt').animate({'right' : 0}, 800);
+});
