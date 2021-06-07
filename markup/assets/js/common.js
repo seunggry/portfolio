@@ -42,6 +42,14 @@ $(window).on('mousewheel DOMMouseScroll', function(e) {
 	}
 });
 
+// 화면이 1920px일 경우, 스크롤 없애기
+let containerW = $('.container').innerWidth();
+let bodyW = $('body').innerWidth();
+
+if( containerW <= bodyW ) {
+    $('body').css({'overflow-x': 'hidden', 'width' : '100%'});
+}
+
 
 // 인트로 텍스트 인터랙션
 $('.intro > .tit .before').animate({'top' : '0'}, 500, function() {
@@ -189,13 +197,21 @@ $('html').on('mousemove', function(e){
     $('.mouseCursor').css({'left':  mouseX + 'px', 'top' : mouseY + 'px'});
 });
 
-$('html').on('mousedown', function(e){
+$('html').on('mousedown', function(){
     $('.mouseCursor').animate({width : cursorEffectSize, height : cursorEffectSize, opacity : '1'}, 300,
         function(){
             $('.mouseCursor').animate({width : cursorOriginSize , height : cursorOriginSize, opacity : '0.5'}, 300)
         }
     )
 });
+
+$('a').on('mouseover', function(){
+    $('.mouseCursor').animate({width : cursorEffectSize, height : cursorEffectSize}, 300)
+}).on('mouseleave', function(){
+    $('.mouseCursor').animate({width : cursorOriginSize, height : cursorOriginSize}, 300)
+});
+
+
 
 // float_mark 호버시 인터랙션 정지
 $('.float_mark').on('mouseover', function(){
@@ -213,4 +229,8 @@ $('.about .imgWrap .img',).animate({'left' : 0}, 800, function(){
 
 $('.contact > h2').animate({'top' : '360px'}, 800, function(){
     $('.contact .txtWrap .subTxt').animate({'right' : 0}, 800);
+});
+
+$('.pfDetail .subVisual .imgWrap').animate({'left' : 0}, 800, function(){
+    $('.pfDetail .subVisual .overviewTxt').animate({'right' : 0}, 800);
 });
