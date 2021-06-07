@@ -53,4 +53,6 @@ html {position: relative; cursor: none;}
 a {cursor: none !important;}
 .container {position: relative; height: 100vh;}
 .container.main {display: inline-flex; white-space: normal;}
-section {position: relative; display: flex; align-items: center; min-width: 100vw; height: 100%; }
+section {position: relative; display: flex; align-items: center; min-width: 100vw; height: 100%;}
+
+
