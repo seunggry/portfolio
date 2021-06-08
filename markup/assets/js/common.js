@@ -69,12 +69,14 @@ let btnMenu = $('.gnbBtn .btn_menu');
 let btnClose = $('.gnbBtn .btn_close');
 
 btnMenu.on('click', function(){
+    $('body').css({'overflow-x' : 'hidden'});
     menuOpen.addClass('on');
     btnMenu.css({'display':'none'});
     btnClose.css({'display':'block'});
 });
 
 btnClose.on('click', function(){
+    $('body').css({'overflow-x' : ''});
     menuOpen.removeClass('on');
     btnMenu.css({'display':''});
     btnClose.css({'display':''});
@@ -114,7 +116,7 @@ function showText (target, message, index, interval) {
 
 setTimeout(function() {
     let text = $('.textEdit').html().replace(/<br *\/?>/gi,'\n');
-    showText('.msgTxt', text, 0, 50);
+    showText('.msgTxt', text, 0, 30);
 }, 500);
 
 
@@ -153,37 +155,10 @@ $(window).on("mousemove", function(e) {
 
   });
 
-
-// 포트폴리오 리스트 이미지 효과 2
-// let currentPos = window.pageXOffset;
-
-// function portfolioEvent () {
-//     const newPos = window.pageXOffset;
-//     const diff = newPos - currentPos;
-//     const speed = diff/4 * 0.35;
-
-//     $('.pfList').css({'transform' : `skewY(${speed}deg)`});
-
-//     currentPos = newPos;
-//     requestAnimationFrame(portfolioEvent);
-// }
-
-// portfolioEvent();
-
 // 해당 위치 인터랙션
 $(window).scroll(function(){
     let scrollL = $(window).scrollLeft();
     let windowW = window.innerWidth * 3/4;
-    let pfListW;
-
-    // $('.pfList li').each(function(){
-    //     pfListW = $(this).offset().left;
-
-    //     if( scrollL > pfListW - windowW ) {
-    //         $(this).animate({'opacity' : 1}, 100);
-    //     }
-    // });
-
 
     $('.contact > .inner').each(function(){
         contactW = $(this).offset().left;
@@ -195,36 +170,38 @@ $(window).scroll(function(){
 
 });
 
-// 스크롤 이동 부드럽게
-// let locationW = $('body').offset().left;
-// window.scrollTo({left: 100, behavior: 'smooth'});
-
-
 // 마우스 커서 인터랙션
+let windowW = $(window).innerWidth();
+let mobileSize = '980px'
 let cursorOriginSize = '30px';
 let cursorEffectSize = '50px';
 
-$('html').on('mousemove', function(e){
-    const mouseX = e.pageX;
-    const mouseY = e.pageY;
-
-    $('.mouseCursor').css({'left':  mouseX + 'px', 'top' : mouseY + 'px'});
-});
-
-$('html').on('mousedown', function(){
-    $('.mouseCursor').animate({width : cursorEffectSize, height : cursorEffectSize, opacity : '1'}, 300,
-        function(){
-            $('.mouseCursor').animate({width : cursorOriginSize , height : cursorOriginSize, opacity : '0.5'}, 300)
-        }
-    )
-});
-
-$('a').on('mouseover', function(){
-    $('.mouseCursor').animate({width : cursorEffectSize, height : cursorEffectSize}, 300)
-}).on('mouseleave', function(){
-    $('.mouseCursor').animate({width : cursorOriginSize, height : cursorOriginSize}, 300)
-});
-
+if (windowW > mobileSize ) {
+    
+    $('.mouseCursor').css({'display' : 'block'});
+    $('html').on('mousemove', function(e){
+        const mouseX = e.pageX;
+        const mouseY = e.pageY;
+    
+        $('.mouseCursor').css({'left':  mouseX + 'px', 'top' : mouseY + 'px'});
+    });
+    
+    $('html').on('mousedown', function(){
+        $('.mouseCursor').animate({width : cursorEffectSize, height : cursorEffectSize, opacity : '1'}, 300,
+            function(){
+                $('.mouseCursor').animate({width : cursorOriginSize , height : cursorOriginSize, opacity : '0.5'}, 300)
+            }
+        )
+    });
+    
+    $('a').on('mouseover', function(){
+        $('.mouseCursor').animate({width : cursorEffectSize, height : cursorEffectSize}, 300)
+    }).on('mouseleave', function(){
+        $('.mouseCursor').animate({width : cursorOriginSize, height : cursorOriginSize}, 300)
+    });
+} else {
+    $('.mouseCursor').css({'display' : 'none'});
+}
 
 
 // float_mark 호버시 인터랙션 정지
