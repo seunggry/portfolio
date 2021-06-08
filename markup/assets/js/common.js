@@ -48,7 +48,37 @@ let bodyW = $('body').innerWidth();
 
 if( containerW <= bodyW ) {
     $('body').css({'overflow-x': 'hidden', 'width' : '100%'});
+
+    $(window).scroll(function(){
+        let scrollTop = $(window).scrollTop();
+        let headerH = $('header .gnb').innerHeight();
+
+        if(scrollTop >= headerH) {
+            $('header .gnb').addClass('on');
+
+        } else {
+            $('header .gnb').removeClass('on');
+        }
+    });
 }
+
+// 메뉴 클릭 시
+let gnb = $('header .gnb');
+let menuOpen =  $('header .menuOpen');
+let btnMenu = $('.gnbBtn .btn_menu');
+let btnClose = $('.gnbBtn .btn_close');
+
+btnMenu.on('click', function(){
+    menuOpen.addClass('on');
+    btnMenu.css({'display':'none'});
+    btnClose.css({'display':'block'});
+});
+
+btnClose.on('click', function(){
+    menuOpen.removeClass('on');
+    btnMenu.css({'display':''});
+    btnClose.css({'display':''});
+});
 
 
 // 인트로 텍스트 인터랙션
@@ -146,13 +176,13 @@ $(window).scroll(function(){
     let windowW = window.innerWidth * 3/4;
     let pfListW;
 
-    $('.pfList li').each(function(){
-        pfListW = $(this).offset().left;
+    // $('.pfList li').each(function(){
+    //     pfListW = $(this).offset().left;
 
-        if( scrollL > pfListW - windowW ) {
-            $(this).animate({'opacity' : 1}, 100);
-        }
-    });
+    //     if( scrollL > pfListW - windowW ) {
+    //         $(this).animate({'opacity' : 1}, 100);
+    //     }
+    // });
 
 
     $('.contact > .inner').each(function(){
@@ -169,22 +199,6 @@ $(window).scroll(function(){
 // let locationW = $('body').offset().left;
 // window.scrollTo({left: 100, behavior: 'smooth'});
 
-// 메뉴 클릭 시
-let menuOpen =  $('header .menuOpen');
-let btnMenu = $('.gnbBtn .btn_menu');
-let btnClose = $('.gnbBtn .btn_close');
-
-btnMenu.on('click', function(){
-    menuOpen.addClass('on');
-    btnMenu.css({'display':'none'});
-    btnClose.css({'display':'block'});
-});
-
-btnClose.on('click', function(){
-    menuOpen.removeClass('on');
-    btnMenu.css({'display':''});
-    btnClose.css({'display':''});
-});
 
 // 마우스 커서 인터랙션
 let cursorOriginSize = '30px';
@@ -227,7 +241,7 @@ $('.about .imgWrap .img',).animate({'left' : 0}, 800, function(){
     });
 });
 
-$('.contact > h2').animate({'top' : '360px'}, 800, function(){
+$('.contact > h2').animate({'top' : '35%'}, 800, function(){
     $('.contact .txtWrap .subTxt').animate({'right' : 0}, 800);
 });
 

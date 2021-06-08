@@ -55,4 +55,21 @@ a {cursor: none !important;}
 .container.main {display: inline-flex; white-space: nowrap;}
 section {position: relative; display: flex; align-items: center; min-width: 100vw; height: 100%;}
 
+@media all and (max-width: 980px) {
+    
+    body {overflow-x: hidden; overflow-y: auto;}
+    body::-webkit-scrollbar {display: none;}
+    body::-webkit-scrollbar-thumb {display: none;}
+
+    .container {padding: 18.37vw 6.12vw 0; height: auto; z-index: 6;}
+    .container.main {display: block; white-space: nowrap;}
+    section {overflow: hidden; display: block; width: 100%; min-width: auto; height: auto;}
+
+    .container h2 {font-size: 8.16vw;}
+    .container h3 {font-size: 7.35vw;}
+    .container h4 {font-size: 5.71vw;}
+    .container h5 {font-size: 4.90vw;}
+    .container h6 {font-size: 4.08vw;}
+    .container p {font-size: 3.67vw;}
+}
 

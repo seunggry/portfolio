@@ -5,17 +5,21 @@
 .btn:hover a::before {width: 100px; height: 100px;}
 
 /* header */
-header {position: fixed; height: 140px; z-index: 10;}
+header {position: fixed; width: 100%; height: 140px; z-index: 10;}
 header .gnb {position: absolute; display: flex; align-items: center; width: 100%; height: 140px; z-index: 20;}
 header .gnb h1 {position: absolute; left: 60px; }
 header .gnb h1 a {display: block; width: 64px; height: 28px;}
 header .gnb h1 img {width: 100%;}
+header .gnb.on {background: #000;}
 
 header .gnb .gnbBtn {position: absolute; right: 60px; width: 50px; height: 50px;}
+header .gnb .gnbBtn img {width: 100%;}
 header .gnb .gnbBtn a.btn_close {display: none;}
 
-header .menuOpen {position: relative; padding: 140px 200px; display: flex; align-items: center; width: 100vw; height: 100vh; background: #111;  z-index: 10; transform: scale(0); transform-origin: 90% 10%; transition: 0.5s;}
+header .menuOpen {position: relative; top: 0; left: 0; width: 100vw; height: 100vh; background: #111; transform: scale(0); transform-origin: 90% 10%; transition: 0.5s; z-index: 30;}
 header .menuOpen.on {transform: scale(1);}
+header .menuOpen .gnb.on {background: #111;}
+header .menuOpen .menuList {position: absolute; top: 50%; left: 15%; transform: translateY(-50%);}
 header .menuOpen .menuList li + li {margin-top: 100px;}
 header .menuOpen .menuList li span {font-size: 90px; color: #fff; letter-spacing: 8px; font-weight: 800; cursor: pointer; transition: 0.3s;}
 header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: #111;}
@@ -27,26 +31,26 @@ header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: 
 .float_mark::before {content: ''; display: block; width: 240px; height: 240px; background: url('../img/common/img_mark.png') no-repeat center / cover;}
 
 /* intro */
-.intro .tit{display: flex; width: 30%;}
+.intro .tit{display: flex; width: 32%;}
 .intro .tit span {position: relative;}
 .intro .tit span + span {margin-left: -10px;}
 .intro .tit .before {position: relative; top: -600px; display: block; padding-left: 60px; font-size: 100px; font-weight: 800; color: #fff; background: #000; z-index: 2;}
 .intro .tit .after {position: relative; left: -100%; margin-left: 10px; font-size: 100px; font-weight: 800; color: #fff; white-space: nowrap; opacity: 0;}
-.intro .detail {position: relative; display: flex; justify-content: center; align-items: center; width: 70%; height: 100%;}
+.intro .detail {position: relative; display: flex; justify-content: center; align-items: center; width: 68%; height: 100%;}
 .intro .detail .msgTxt {margin-left: -100px; min-width: 480px; min-height: 336px; font-size: 24px; font-weight: 200; color: #fff; white-space: pre;}
 .intro .detail .textEdit {display: none;}
 
 /* pfList */
-.pfList {display: inline-flex; padding: 0 130px; z-index: 9;}
+.pfList {position: relative; display: inline-flex; padding: 0 130px; z-index: 9;}
 .pfList li {position: relative; overflow: hidden; margin-top: 40px; width: 1200px; height: 671px; transform-style: preserve-3d; transform-origin: center; transform: rotateX(-2.3deg) rotateY(-5.5deg); transition: ease-out 0.3s;}
 .pfList li + li {margin-left: 30px;}
 .pfList li a {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: block; width: 100%; height: 100%; transition: 0.3s;}
-.pfList .txtWrap {position: absolute;  top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; z-index: 2; transition: 0.3s 0.1s;}
+.pfList .txtWrap {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; color: #fff; z-index: 2; transition: 0.3s 0.1s;}
 .pfList .txtWrap h3 {font-weight: 100; text-align: center;}
 .pfList .txtWrap span {font-weight: 500;}
 .pfList .txtWrap p {width: 60%; margin-top: 18px; font-size: 18px; font-weight: 300; opacity: 0.7; line-height: 1.5;}
-.pfList .imgWrap {overflow: hidden; width: 100%;}
-.pfList .imgWrap::before {content: ''; position: absolute; display: block; width: 0%; height: 100%; background-color: #000; opacity: 0.7; z-index: 1; transition: 0.2s;}
+.pfList .imgWrap {position: relative; width: 100%; height: 100%;}
+.pfList .imgWrap img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
 
 /* contact */
 .contact {position: relative; display: flex; align-items: center; justify-content: center; align-items: center; padding: 0 120px;}
@@ -78,7 +82,6 @@ subpage
 .about .imgWrap { width: 600px; height: 700px; overflow: hidden;}
 .about .imgWrap .img {position: relative; left: -100%; width: 600px; padding-top: calc(700/600 * 100%);}
 .about .imgWrap .img img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;}
-.about .imgWrap .figure {font-size: 20px; line-height: 1.5; letter-spacing: 0.5px; text-align: right; }
 
 .about .title {position: absolute; overflow: hidden; top: 18%; left: 46.5%; width: 507px;  color: #fff;}
 .about .title p {position: relative; left: -100%; margin-top: 10px; font-size: 100px; font-weight: 800;}
@@ -91,8 +94,7 @@ subpage
 .about .txtWrap .subTxt dd + dd {margin-top: 30px;}
 
 /* contact */
-.contact {position: relative;}
-.contact > h2 {position: absolute; top: -100%; left: -140px; font-size: 140px; font-weight: 800; color: #fff; letter-spacing: 4px; white-space: nowrap; transform: rotate(90deg);}
+.contact > h2 {position: absolute; top: -100%; left: -140px; font-size: 140px; font-weight: 800; color: #000; letter-spacing: 4px; white-space: nowrap; transform: rotate(90deg); -webkit-text-stroke: 1px #fff;}
 .contact .txtWrap {overflow: hidden; width: 560px; margin-left: 180px;}
 .contact .txtWrap .subTxt {position: relative; right: -100%;}
 .contact .txtWrap .txt li {font-size: 18px; font-weight: 200; color: #fff;  opacity: 0.7; line-height: 1.5;}
@@ -103,11 +105,13 @@ subpage
 .contact .txtWrap .copyright {font-size: 16px;}
 
 /* portfolio */
-.portfolio > h2 {padding: 60px; font-size: 80px; color: #fff; letter-spacing: 6px;}
+.portfolio > .tit {display: flex; align-items: center; justify-content: center; width: 25%; height: 100%;}
+.portfolio > .tit h2 {font-size: 140px; font-weight: 800; color: #000; letter-spacing: 8px; transform: rotate(-90deg); -webkit-text-stroke: 1px #fff;}
+.portfolio > .pfList {padding-left: 0; }
 
 /* portfolio_detailpage */
 .pfDetail .subVisual .imgWrap {position: relative; overflow: hidden; width: 42%; padding-top: calc(937/800 * 100%); left: -100%;}
-.pfDetail .subVisual .imgWrap img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 1690px; }
+.pfDetail .subVisual .imgWrap img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 1920px; }
 
 .pfDetail .subVisual .overviewTxt {position: relative; overflow: hidden; right: -100%; padding-left: 8%; width: 50%; color: #fff;}
 .pfDetail .subVisual .overviewTxt h3 {line-height: 1.3; font-weight: 100;}
@@ -115,15 +119,13 @@ subpage
 .pfDetail .subVisual .overviewTxt p {margin-top: 50px; width: 60%; font-size: 20px; font-weight: 100; line-height: 1.8; opacity: 0.5;}
 
 .pfDetail .subVisual .overviewTxt .linkList {margin-top: 100px;}
-.pfDetail .subVisual .overviewTxt .linkTxt {display: inline-block; width: 35%; vertical-align: top;}
+.pfDetail .subVisual .overviewTxt .linkTxt {display: inline-block; width: 35%; vertical-align: top; font-size: 0;}
 .pfDetail .subVisual .overviewTxt .linkTxt + .linkTxt {margin-left: 6%;}
 .pfDetail .subVisual .overviewTxt .linkTxt dt {font-size: 16px; font-weight: 300; opacity: 0.8;}
 .pfDetail .subVisual .overviewTxt .linkTxt dd {margin-top: 10px; font-size: 16px; font-weight: 500; letter-spacing: 0.5px; word-break: break-all; line-height: 1.5;}
 .pfDetail .subVisual .overviewTxt .linkTxt dd a {display: inline-block;}
 .pfDetail .subVisual .overviewTxt .linkTxt dd a::after {content: ''; margin-top: 4px; display: block; width: 0; height: 2px; background: #fff; transition: 0.5s;}
 .pfDetail .subVisual .overviewTxt .linkTxt dd:hover a::after {width: 100%;}
-
-
 
 /* keyframes */
 @keyframes floatMarkRotate {
@@ -138,4 +140,200 @@ subpage
     100% {
         transform: scale(1);
     }
+}
+
+/* mediaQuery */
+@media all and (max-width: 1440px) {
+    .contact > h2 {left: -240px;}
+}
+
+@media all and (max-width: 1280px){
+    /* common */
+    .btn a {padding: 2.34vw; font-size: 2.19vw; letter-spacing: 0.08vw;}
+    .btn a::before {width: 4.53vw; height: 4.53vw;}
+    .btn:hover a::before {width: 8.59vw; height: 8.59vw;}
+    
+    /* header */
+    header { height: 11.72vw; }
+    header .gnb {height: 11.72vw; }
+    header .gnb h1 { left: 5.47vw; }
+    header .gnb h1 a { width: 5.78vw; height: 2.97vw;}
+    
+    header .gnb .gnbBtn { right: 5.47vw; width: 4.69vw; height: 4.69vw;}
+    
+    header .menuOpen .menuList li + li {margin-top: 8.59vw;}
+    header .menuOpen .menuList li span {font-size: 7.81vw;  letter-spacing: 0.63vw; }
+    header .menuOpen .menuList li:hover span {-webkit-text-stroke: 0.23vw #fff; }
+
+    /* footer */
+    .float_mark { right: 5.47vw; bottom: 5.47vw;}
+    .float_mark::before {width: 19.53vw; height: 19.53vw;}
+    
+    /* intro */
+    .intro .tit span + span {margin-left: -1.56vw;}
+    .intro .tit .before {top: -47.66vw; padding-left: 5.47vw; font-size: 7.81vw;}
+    .intro .tit .after {margin-left: 1.56vw; font-size: 7.81vw;}
+    .intro .detail .msgTxt {margin-left: -8.59vw; min-width: 38.28vw; min-height: 27.03vw; font-size: 2.50vw;}
+    
+    /* pfList */
+    .pfList {padding: 0 10.94vw; }
+    .pfList li {margin-top: 3.91vw; width: 94.53vw; height: 53.20vw;}
+    .pfList li + li {margin-left: 3.13vw;}
+    .pfList .txtWrap p {margin-top: 2.19vw; font-size: 2.19vw;}
+    
+    /* contact */
+    .contact {padding: 0 10.16vw;}
+    .contact .txt {margin-bottom: 4.69vw;}
+    .contact .infoTxt li {font-size: 2.50vw;}
+    .contact .infoTxt li a::after { margin-top: 0.78vw; height: 0.23vw;}
+    .contact .infoTxt li + li {margin-top: 1.56vw;}
+    
+    .contact .circlePulse span {width: 3.13vw; height: 3.13vw;}
+    
+    .contact .circlePulse span:nth-child(1) {top: 15.63vw; left: 39.06vw;}
+    .contact .circlePulse span:nth-child(2) {top: 31.25vw; left: 15.63vw;} 
+    .contact .circlePulse span:nth-child(3) {top: 70.31vw; left: 62.50vw;} 
+    .contact .circlePulse span:nth-child(4) {top: 54.69vw; left: 93.75vw;}
+    .contact .circlePulse span:nth-child(5) {top: 27.34vw; left: 78.13vw;}
+    
+    /*
+    subpage
+    */
+    
+    /* about */
+    .about .imgWrap {margin-top: 3.91vw; width: 46.88vw; height: 62.50vw;}
+    .about .imgWrap .img {width: 46.88vw; padding-top: calc(800/600 * 100%);}
+    
+    .about .title {width: 40.39vw;}
+    .about .title p {margin-top: 2.42vw; font-size: 7.81vw;}
+    .about .title p::before {top: 3.52vw; left: 22.66vw; font-size: 11.72vw;}
+    
+    .about .txtWrap {width: 39.06vw;}
+    .about .txtWrap .subTxt {margin: 19.53vw 0 0 6.25vw; }
+    .about .txtWrap .subTxt dt {margin: 7.81vw 0 2.34vw; font-size: 2.03vw; }
+    .about .txtWrap .subTxt dd {font-size: 1.56vw;}
+    .about .txtWrap .subTxt dd + dd {margin-top: 2.34vw;}
+    
+    /* contact */
+    .sub.contact > h2 {left: -19.53vw; font-size: 10.94vw; letter-spacing: 0.31vw;}
+    .sub.contact .txtWrap {width: 43.75vw; margin-left: 14.06vw;}
+    .sub.contact .txtWrap .txt li {font-size: 1.56vw;}
+    .sub.contact .txtWrap .txt li br {display: none;}
+    .sub.contact .txtWrap .txt li + li {margin-top: 2.34vw;}
+    .sub.contact .txtWrap .infoTxt {margin-bottom: 11.72vw; }
+    .sub.contact .txtWrap .infoTxt li { font-size: 4.69vw; }
+    .sub.contact .txtWrap .copyright {font-size: 1.56vw;}
+    
+    /* portfolio */
+    .portfolio > .tit h2 {font-size: 10.94vw; letter-spacing: 0.63vw;}
+    
+    /* portfolio_detailpage */
+    .pfDetail .subVisual .overviewTxt p {margin-top: 3.91vw; font-size: 1.56vw;}
+    .pfDetail .subVisual .overviewTxt .linkList {margin-top: 7.81vw;}
+    .pfDetail .subVisual .overviewTxt .linkTxt dt {font-size: 1.56vw;}
+    .pfDetail .subVisual .overviewTxt .linkTxt dd {margin-top: 0.78vw; font-size: 1.56vw;  letter-spacing: 0.08vw;}
+    .pfDetail .subVisual .overviewTxt .linkTxt dd a::after { margin-top: 0.31vw; height: 0.16vw;}
+
+}
+
+@media all and (max-width: 1080px) {
+    .about .title p {margin-top: 8.78vw;}
+}
+
+@media all and (max-width: 980px) {
+
+    /* header */
+    header {height: 18.37vw;}
+    header .gnb {height: 18.37vw;}
+    header .gnb h1 {left: 6.12vw;}
+    header .gnb h1 a {width: 13.67vw; height: 6.02vw;}
+
+    header .gnb .gnbBtn {right: 6.12vw; width: 8.16vw; height: 8.16vw;}
+
+    header .menuOpen .menuList {top: 56.12vw; left: 6.12vw;}
+    header .menuOpen .menuList li + li {margin-top: 12.20vw;}
+    header .menuOpen .menuList li span {font-size: 10.20vw; letter-spacing: 0.82vw; -webkit-text-stroke: 0.31vw #fff; color: #111;}
+    
+    /* footer */
+    .float_mark {right: -10.20vw; bottom: -10.20vw;}
+    .float_mark::before {width: 28.57vw; height: 28.57vw; }
+
+    /* intro */
+    .intro {padding: 7.10vw 0;}
+    .intro .tit{overflow: hidden; padding-top: 4.04vw; width: 100%; justify-content: center;}
+    .intro .tit span + span {margin-left: -1.02vw;}
+    .intro .tit .before {padding-left: 0; top: -61.22vw; font-size: 16.33vw;}
+    .intro .tit .after {left: -100%; margin-left: 1.02vw; font-size: 16.33vw;}
+    .intro .detail {width: 100%; margin-top: 4.04vw;}
+    .intro .detail .msgTxt {margin-left: -19.80vw; min-width: 73.98vw; height: 47.76vw; font-size: 3.67vw;}
+
+    /* pfList */
+    .pfList {display: block; padding: 10.20vw 0;}
+    .pfList li {position: relative; overflow: hidden; margin-top: 0; width: 100%; height: 68.47vw;}
+    .pfList li + li {margin-top: 6.08vw; margin-left: 0;}
+    .pfList .imgWrap {overflow: hidden; height: 100%}
+    .pfList .imgWrap img {min-width: 122.45vw; height: 100%;}
+
+    /* contact */
+    .contact {padding: 7.14vw 0 18.37vw;}
+    .contact .txt {margin-bottom: 6.12vw; font-size: 4.90vw;}
+    .contact .infoTxt li {font-size: 4.90vw;}
+    .contact .infoTxt li a::after {margin-top: 1.02vw; height: 0.31vw;}
+    .contact .infoTxt li + li {margin-top: 2.04vw;}
+
+    .contact .circlePulse span {width: 5.10vw; height: 5.10vw;}
+
+    .contact .circlePulse span:nth-child(1) {top: 10.20vw; left: 30.61vw;}
+    .contact .circlePulse span:nth-child(2) {top: 50.00vw; left: 13.27vw;} 
+    .contact .circlePulse span:nth-child(3) {top: 30.61vw; left: 51.02vw;} 
+    .contact .circlePulse span:nth-child(4) {top: 1.02vw; left: 61.22vw;}
+    .contact .circlePulse span:nth-child(5) {top: 25.51vw; left: 5.10vw;}
+
+    /*
+    subpage
+    */
+
+    /* about */
+    .about {display: block; padding-bottom: 12.24vw;}
+    .about .imgWrap {width: 100%; height: 71.43vw;}
+    .about .imgWrap .img {width: 100%; padding-top: calc(700/858 * 100%);}
+
+    .about .title {position: relative; top: -7.14vw; left: 6.12vw; width: 100%;}
+    .about .title p {position: relative; left: -100%; margin-top: 0; font-size: 12.24vw;}
+    .about .title p::before {top: 5.10vw; left: 30.61vw; font-size: 16.33vw;}
+
+    .about .txtWrap {width: 100%;}
+    .about .txtWrap .subTxt {margin: 0 0 0 7.14vw;}
+    .about .txtWrap .subTxt dt {margin: 0 0 6.12vw; font-size: 4.08vw;}
+    .about .txtWrap .subTxt dd {font-size: 3.27vw;}
+    .about .txtWrap .subTxt dd br {display: none;}
+    .about .txtWrap .subTxt dd + dd {margin-top: 5.10vw;}
+
+    /* contact */
+    .sub.contact {display: block; padding: 18.37vw 6.12vw 14.29vw;}
+    .sub.contact > h2 {position: relative; left: -11.22vw; margin-top: 6.12vw; font-size: 13.27vw; letter-spacing: 0.41vw; transform: rotate(0); -webkit-text-stroke: 0.31vw #fff;}
+    .sub.contact .txtWrap {overflow: hidden; width: 100%; margin: 10.20vw 0 0 6.12vw;}
+    .sub.contact .txtWrap .subTxt {position: relative; right: -100%; width: 85%;}
+    .sub.contact .txtWrap .txt li {font-size: 3.27vw; font-weight: 200; color: #fff;  opacity: 0.7; line-height: 1.5;}
+    .sub.contact .txtWrap .txt li + li {margin-top: 5.10vw;}
+    .sub.contact .txtWrap .infoTxt {margin-bottom: 18.37vw;}
+    .sub.contact .txtWrap .infoTxt li {font-size: 6.53vw;}
+    .sub.contact .txtWrap .copyright {font-size: 2.86vw;}
+
+    /* portfolio */
+    .portfolio > .tit {display: block; padding: 5.10vw 0 1.02vw; width: 100%; height: 100%;}
+    .portfolio > .tit h2 {font-size: 13.27vw; letter-spacing: 0.82vw; transform: rotate(0); -webkit-text-stroke: 0.31vw #fff;}
+
+    /* portfolio_detailpage */
+    .pfDetail .subVisual .imgWrap {width: 100%;}
+    .pfDetail .subVisual .imgWrap img {min-width: 195.92vw;}
+
+    .pfDetail .subVisual .overviewTxt {margin: 10.20vw 0; padding-left: 0; width: 100%;}
+    .pfDetail .subVisual .overviewTxt p {margin-top: 6.12vw; width: 90%; font-size: 3.67vw;}
+
+    .pfDetail .subVisual .overviewTxt .linkList {margin-top: 12.24vw;}
+    .pfDetail .subVisual .overviewTxt .linkTxt {width: 48%;}
+    .pfDetail .subVisual .overviewTxt .linkTxt + .linkTxt {margin-left: 2%;}
+    .pfDetail .subVisual .overviewTxt .linkTxt dt {font-size: 3.27vw;}
+    .pfDetail .subVisual .overviewTxt .linkTxt dd {margin-top: 2.04vw; font-size: 3.27vw; letter-spacing: 0.05vw;}
 }
