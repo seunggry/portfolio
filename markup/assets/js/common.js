@@ -62,6 +62,13 @@ if( containerW <= bodyW ) {
     });
 }
 
+// 화면 값 측정
+$(window).resize(function(){
+    let windowH = $(window).innerHeight();
+    console.log(windowH);
+    $('section').css({'height' : windowH +'px'});
+});
+
 // 메뉴 클릭 시
 let menuOpen =  $('header .menuOpen');
 let btnMenu = $('.gnbBtn .btn_menu');
@@ -220,6 +227,6 @@ $('.contact > h2').animate({'top' : '35%'}, 800, function(){
     $('.contact .txtWrap .subTxt').animate({'right' : 0}, 800);
 });
 
-$('.pfDetail .subVisual .imgWrap').animate({'left' : 0}, 800, function(){
+$('.pfDetail .subVisual > .imgWrap').animate({'left' : 0}, 800, function(){
     $('.pfDetail .subVisual .overviewTxt').animate({'right' : 0}, 800);
 });
