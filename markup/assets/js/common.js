@@ -63,7 +63,6 @@ if( containerW <= bodyW ) {
 }
 
 // 메뉴 클릭 시
-let gnb = $('header .gnb');
 let menuOpen =  $('header .menuOpen');
 let btnMenu = $('.gnbBtn .btn_menu');
 let btnClose = $('.gnbBtn .btn_close');
@@ -172,12 +171,11 @@ $(window).scroll(function(){
 
 // 마우스 커서 인터랙션
 let windowW = $(window).innerWidth();
-let mobileSize = '980px'
+let mobileSize = 980;
 let cursorOriginSize = '30px';
 let cursorEffectSize = '50px';
 
 if (windowW > mobileSize ) {
-    
     $('.mouseCursor').css({'display' : 'block'});
     $('html').on('mousemove', function(e){
         const mouseX = e.pageX;

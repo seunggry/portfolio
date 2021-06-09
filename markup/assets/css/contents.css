@@ -95,7 +95,7 @@ subpage
 .about .txtWrap {width: 500px; overflow: hidden;}
 .about .txtWrap .subTxt {position: relative; right: -100%; margin: 250px 0 0 80px; color: #fff;}
 .about .txtWrap .subTxt dt {margin: 100px 0 30px; font-size: 20px; font-weight: 500; line-height: 1.5;}
-.about .txtWrap .subTxt dd {font-size: 16px; font-weight: 200; opacity: 0.5; line-height: 1.5;}
+.about .txtWrap .subTxt dd {width: 85%; font-size: 16px; font-weight: 200; opacity: 0.5; line-height: 1.5;}
 .about .txtWrap .subTxt dd + dd {margin-top: 30px;}
 
 /* contact */
@@ -213,18 +213,19 @@ subpage
     .about .imgWrap .img {width: 46.88vw; padding-top: calc(800/600 * 100%);}
     
     .about .title {width: 40.39vw;}
-    .about .title p {margin-top: 2.42vw; font-size: 7.81vw;}
+    .about .title p {margin-top: 0; font-size: 7.81vw;}
     .about .title p::before {top: 3.52vw; left: 22.66vw; font-size: 11.72vw;}
     
     .about .txtWrap {width: 39.06vw;}
-    .about .txtWrap .subTxt {margin: 19.53vw 0 0 6.25vw; }
+    .about .txtWrap .subTxt {margin: 23.53vw 0 0 6.25vw; }
     .about .txtWrap .subTxt dt {margin: 7.81vw 0 2.34vw; font-size: 2.03vw; }
     .about .txtWrap .subTxt dd {font-size: 1.56vw;}
     .about .txtWrap .subTxt dd + dd {margin-top: 2.34vw;}
     
     /* contact */
     .sub.contact > h2 {left: -19.53vw; font-size: 10.94vw; letter-spacing: 0.31vw;}
-    .sub.contact .txtWrap {width: 43.75vw; margin-left: 14.06vw;}
+    .sub.contact .txtWrap {width: 52.75vw; margin-left: 14.06vw;}
+    .sub.contact .txtWrap .txt {width: 85%;}
     .sub.contact .txtWrap .txt li {font-size: 1.56vw;}
     .sub.contact .txtWrap .txt li br {display: none;}
     .sub.contact .txtWrap .txt li + li {margin-top: 2.34vw;}
@@ -245,7 +246,7 @@ subpage
 }
 
 @media all and (max-width: 1080px) {
-    .about .title p {margin-top: 8.78vw;}
+    .about .title p {margin-top: 3.78vw;}
 }
 
 @media all and (max-width: 980px) {
@@ -329,13 +330,15 @@ subpage
     /* contact */
     .sub.contact {display: block; padding: 18.37vw 6.12vw 14.29vw;}
     .sub.contact > h2 {position: relative; left: -11.22vw; margin-top: 6.12vw; font-size: 13.27vw; letter-spacing: 0.41vw; transform: rotate(0); -webkit-text-stroke: 0.31vw #fff;}
-    .sub.contact .txtWrap {overflow: hidden; width: 100%; margin: 10.20vw 0 0 6.12vw;}
-    .sub.contact .txtWrap .subTxt {position: relative; right: -100%; width: 85%;}
-    .sub.contact .txtWrap .txt li {font-size: 3.27vw; font-weight: 200; color: #fff;  opacity: 0.7; line-height: 1.5;}
+    .sub.contact .txt {margin-bottom: 10.12vw;}
+    .sub.contact .txtWrap {width: 100%; margin: 10.20vw 0 0 6.12vw;}
+    .sub.contact .txtWrap .subTxt {width: 85%;}
+    .sub.contact .txtWrap .txt li {font-size: 3.27vw; line-height: 1.7;}
     .sub.contact .txtWrap .txt li + li {margin-top: 5.10vw;}
-    .sub.contact .txtWrap .infoTxt {margin-bottom: 18.37vw;}
+    .sub.contact .txtWrap .infoTxt {margin-bottom: 20.37vw;}
     .sub.contact .txtWrap .infoTxt li {font-size: 6.53vw;}
-    .sub.contact .txtWrap .copyright {font-size: 2.86vw;}
+    .sub.contact .txtWrap .infoTxt li + li {margin-top: 1.08vw;}
+    .sub.contact .txtWrap .copyright {font-size: 3.01vw;}
 
     /* portfolio */
     .portfolio > .tit {display: block; padding: 5.10vw 0 1.02vw; width: 100%; height: 100%;}
