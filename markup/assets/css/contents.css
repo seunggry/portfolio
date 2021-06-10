@@ -20,6 +20,7 @@ header .menuOpen {position: relative; top: 0; left: 0; width: 100vw; height: 100
 header .menuOpen.on {transform: scale(1);}
 header .menuOpen .gnb.on {background: #111;}
 header .menuOpen .menuList {position: absolute; top: 50%; left: 15%; transform: translateY(-50%);}
+header .menuOpen .menuList li a {display: block;}
 header .menuOpen .menuList li + li {margin-top: 100px;}
 header .menuOpen .menuList li span {font-size: 90px; color: #fff; letter-spacing: 8px; font-weight: 800; cursor: pointer; transition: 0.3s;}
 header .menuOpen .menuList li:hover span {-webkit-text-stroke: 2px #fff; color: #111;}
@@ -376,7 +377,7 @@ subpage
     .pfDetail .subVisual .overviewTxt .linkTxt dt {font-size: 3.27vw;}
     .pfDetail .subVisual .overviewTxt .linkTxt dd {margin-top: 2.04vw; font-size: 3.27vw; letter-spacing: 0.05vw;}
 
-    .pfDetail .subVisual .overviewTxt .btnWrap {margin-top: 160px; width: 100%;}
+    .pfDetail .subVisual .overviewTxt .btnWrap {margin-top: 16.33vw; width: 100%;}
     .pfDetail .subVisual .overviewTxt .btnWrap li a::before {width: 100%; opacity: 0.6;}
-    .pfDetail .subVisual .overviewTxt .btnWrap li span {display: block; opacity: 1; font-size: 36px; letter-spacing: 4px;}
+    .pfDetail .subVisual .overviewTxt .btnWrap li span {display: block; opacity: 1; font-size: 3.67vw; letter-spacing: 0.41vw;}
 }

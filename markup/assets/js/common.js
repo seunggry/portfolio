@@ -63,11 +63,18 @@ if( containerW <= bodyW ) {
 }
 
 // 화면 값 측정
+function windowResize() {
+    if( $(window).innerWidth() > 980 ) {
+        let windowH = $(window).innerHeight();
+        $('section').css({'height' : windowH +'px'});
+    } else {
+        $('section').css({'height' : 'auto'});
+    }
+}
 $(window).resize(function(){
-    let windowH = $(window).innerHeight();
-    console.log(windowH);
-    $('section').css({'height' : windowH +'px'});
+    windowResize();
 });
+windowResize();
 
 // 메뉴 클릭 시
 let menuOpen =  $('header .menuOpen');
