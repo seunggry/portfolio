@@ -86,7 +86,7 @@ subpage
 /* about */
 .about {display: flex; align-items: center; justify-content: center;}
 .about .imgWrap { width: 600px; overflow: hidden;}
-.about .imgWrap .img {position: relative; left: -100%; width: 600px; padding-top: calc(700/600 * 100%);}
+.about .imgWrap .img {position: relative; left: -100%; width: 600px; height: 700px;}
 .about .imgWrap .img img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;}
 
 .about .title {position: absolute; overflow: hidden; top: 18%; left: 46.5%; width: 507px;  color: #fff;}
@@ -116,7 +116,7 @@ subpage
 .portfolio > .pfList {padding-left: 0; }
 
 /* portfolio_detailpage */
-.pfDetail .subVisual > .imgWrap {position: relative; overflow: hidden; width: 42%; padding-top: calc(937/800 * 100%); left: -100%;}
+.pfDetail .subVisual > .imgWrap {position: relative; overflow: hidden; width: 42%; height: 100vh; left: -100%;}
 .pfDetail .subVisual > .imgWrap img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 1920px; }
 
 .pfDetail .subVisual .overviewTxt {position: relative; overflow: hidden; right: -100%; padding-left: 8%; width: 50%; color: #fff;}
@@ -133,13 +133,13 @@ subpage
 .pfDetail .subVisual .overviewTxt .linkTxt dd a::after {content: ''; margin-top: 4px; display: block; width: 0; height: 2px; background: #fff; transition: 0.5s;}
 .pfDetail .subVisual .overviewTxt .linkTxt dd:hover a::after {width: 100%;}
 
-.pfDetail .subVisual .overviewTxt .btnWrap {display: flex; margin-top: 100px; width: 70%;}
-.pfDetail .subVisual .overviewTxt .btnWrap li {position: relative; flex: 1;}
-.pfDetail .subVisual .overviewTxt .btnWrap li a {display: block; width: 100%; height: 100%;}
+.pfDetail .subVisual .overviewTxt .btnWrap {position: relative; display: flex; margin-top: 100px; width: 70%; z-index: 10;}
+.pfDetail .subVisual .overviewTxt .btnWrap li {width: 50%;}
+.pfDetail .subVisual .overviewTxt .btnWrap li a {position: relative; display: block; width: 100%; height: 100%;}
 .pfDetail .subVisual .overviewTxt .btnWrap li a::before {content: ''; position: absolute; top: 0; left: 0; display: block; width: 0; height: 100%; background: #000; opacity: 0.8; z-index: 2; transition: 0.3s;}
 .pfDetail .subVisual .overviewTxt .btnWrap li span {position: absolute; display: none; opacity: 0; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; font-weight: 600; color: #fff; letter-spacing: 4px; z-index: 3; transition: 0.3s;}
-.pfDetail .subVisual .overviewTxt .btnWrap li .imgWrap {position: relative; overflow: hidden; width: 100%; padding-top: calc(90/180 * 100%); }
-.pfDetail .subVisual .overviewTxt .btnWrap li .imgWrap img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);width: 100%; }
+.pfDetail .subVisual .overviewTxt .btnWrap li .imgWrap {position: relative; overflow: hidden; width: 100%; height: 156px;}
+.pfDetail .subVisual .overviewTxt .btnWrap li .imgWrap img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%;}
 
 .pfDetail .subVisual .overviewTxt .btnWrap li:hover a::before {width: 100%;}
 .pfDetail .subVisual .overviewTxt .btnWrap li:hover span {display: block; opacity: 1;}
@@ -163,7 +163,7 @@ subpage
 @media all and (max-width: 1440px) {
     
     .pfDetail .subVisual .overviewTxt p {width: 80%;}
-    .pfDetail .subVisual .overviewTxt .btnWrap li .imgWrap {padding-top: calc(100/180 * 100%);}
+    /* .pfDetail .subVisual .overviewTxt .btnWrap li .imgWrap {width: 204px; height: 114px;} */
     
 
     .contact > h2 {left: -240px;}
@@ -227,7 +227,7 @@ subpage
     
     /* about */
     .about .imgWrap {margin-top: 3.91vw; width: 46.88vw; height: 62.50vw;}
-    .about .imgWrap .img {width: 46.88vw; padding-top: calc(800/600 * 100%);}
+    .about .imgWrap .img {width: 46.88vw; height: 62.50vw;}
     
     .about .title {width: 40.39vw;}
     .about .title p {margin-top: 0; font-size: 7.81vw;}
@@ -334,7 +334,7 @@ subpage
     /* about */
     .about {display: block; padding-bottom: 12.24vw;}
     .about .imgWrap {width: 100%; height: 85.43vw;}
-    .about .imgWrap .img {width: 100%; padding-top: calc(840/860 * 100%);}
+    .about .imgWrap .img {width: 100%; height: 85.71vw;}
 
     .about .title {position: relative; top: -7.14vw; left: 6.12vw; width: 100%;}
     .about .title p {position: relative; left: -100%; margin-top: 0; font-size: 12.24vw;}
@@ -365,7 +365,7 @@ subpage
     .portfolio > .tit h2 {font-size: 13.27vw; letter-spacing: 0.82vw; transform: rotate(0); -webkit-text-stroke: 0.31vw #fff;}
 
     /* portfolio_detailpage */
-    .pfDetail .subVisual > .imgWrap {width: 100%;}
+    .pfDetail .subVisual > .imgWrap {width: 100%; height: 91.43vw;}
     .pfDetail .subVisual > .imgWrap img {min-width: 195.92vw;}
 
     .pfDetail .subVisual .overviewTxt {margin: 10.20vw 0; padding-left: 0; width: 100%;}
@@ -378,6 +378,8 @@ subpage
     .pfDetail .subVisual .overviewTxt .linkTxt dd {margin-top: 2.04vw; font-size: 3.27vw; letter-spacing: 0.05vw;}
 
     .pfDetail .subVisual .overviewTxt .btnWrap {margin-top: 16.33vw; width: 100%;}
+    .pfDetail .subVisual .overviewTxt .btnWrap li .imgWrap {height: 23.47vw;}
     .pfDetail .subVisual .overviewTxt .btnWrap li a::before {width: 100%; opacity: 0.6;}
     .pfDetail .subVisual .overviewTxt .btnWrap li span {display: block; opacity: 1; font-size: 3.67vw; letter-spacing: 0.41vw;}
+
 }
