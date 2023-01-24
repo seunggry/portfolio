@@ -32,11 +32,11 @@
 
 ## 3. git clone
 1. 작업할 폴더에서 터미널 실행 후
-    - git clone https://gitlab.com/jannylee/kumsung.git
+    - git clone https://gitlab.com/sseung/sample.git
 
 2. 퍼미션 문제 발생할 경우
     - 터미널에서 다음을 실행 (참고 https://zeddios.tistory.com/120)
-        - ssh-keygen -t rsa -C "자기 gitlab 이메일 아이디" (ex. ssh-keygen -t rsa -C "darum.ehjung@gmail.com")
+        - ssh-keygen -t rsa -C "자기 gitlab 이메일 아이디" (ex. ssh-keygen -t rsa -C "dptmejf34@gmail.com")
         - 'enter file in which to save the key....'라고 나오면 엔터
         - 'enter passphrase....'라고 나오면 자기만의 비번 입력하거나 엔터 (엔터치면 비번 없이 진행)
         - 'enter same passphrase again' 나오면 위에 입력했던 비번 똑같이 한번 더 입력

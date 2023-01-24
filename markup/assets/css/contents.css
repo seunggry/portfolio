@@ -133,7 +133,7 @@ subpage
 .pfDetail .subVisual .overviewTxt .linkTxt dd a::after {content: ''; margin-top: 4px; display: block; width: 0; height: 2px; background: #fff; transition: 0.5s;}
 .pfDetail .subVisual .overviewTxt .linkTxt dd:hover a::after {width: 100%;}
 
-.pfDetail .subVisual .overviewTxt .btnWrap {position: relative; display: flex; margin-top: 100px; width: 70%; z-index: 10;}
+.pfDetail .subVisual .overviewTxt .btnWrap {position: relative; display: flex; margin-top: 100px; width: 70%; z-index: 2;}
 .pfDetail .subVisual .overviewTxt .btnWrap li {width: 50%;}
 .pfDetail .subVisual .overviewTxt .btnWrap li a {position: relative; display: block; width: 100%; height: 100%;}
 .pfDetail .subVisual .overviewTxt .btnWrap li a::before {content: ''; position: absolute; top: 0; left: 0; display: block; width: 0; height: 100%; background: #000; opacity: 0.8; z-index: 2; transition: 0.3s;}
